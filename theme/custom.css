@@ -80,12 +80,9 @@ header.custom-header{
     z-index: 1000;
     box-shadow: var(--base-shadow);
     padding: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
     border-radius: var(--border-radius);
-    max-height: 100px;
+    display: flex;
+    flex-direction: column;
 }
 header.custom-header .site-logo{
     width: fit-content;
@@ -132,6 +129,26 @@ header.custom-header nav ul a{
     font-size: 1.25rem;
 }
 
+/*Tablet*/
+@media (min-width: 768px) {
+    header.custom-header{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        max-height: 100px;
+    }
+}
+
+/*Laptop*/
+@media (min-width: 992px) {
+    
+}
+
+/*Desktop*/
+@media (min-width: 1200px) {
+    
+}
+
 /*Footer*/
 footer{
     background-color: var(--footer-bg);
@@ -145,6 +162,7 @@ footer{
     justify-content: space-between;
 
 }
+
 
 /*Main*/
 main{
