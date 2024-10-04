@@ -1,77 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="theme/custom.css">
-    <title>Awesome Tools - Joan Prenafeta</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="theme/custom.css">
+        <title>Awesome Tools - Joan Prenafeta</title>
 
-</head>
-<body class="portada">
-    <header class="custom-header">
-            <figure class="site-logo">
-                <img src="img/Avatar.svg" alt="Go to main page">
-                <caption>
-                    <a href="index.html">Awesome Tools</a>
-                </caption>
-            </figure>
-            <h1 class="sr-only">Awesome Tools by Joan Prenafeta</h1>
-            
-            <nav id="awesome-tools">
+    </head>
+    <body class="portada">
+        <header class="custom-header">
+                <figure class="site-logo">
+                    <img src="img/Avatar.svg" alt="Go to main page">
+                    <figcaption>
+                        <a href="index.html">Awesome Tools</a>
+                    </figcaption>
+                </figure>
+                <h1 class="sr-only">Awesome Tools by Joan Prenafeta</h1>
+                
+                <nav id="awesome-tools" role="navigation" aria-label="Main navigation">
+                    <ul>
+                        <li>
+                            <a href="tools/ColorContrastAccessibilityTest.html" aria-label="Contrast checker, test the color contrast for accessibility">Contrast checker</a>
+                        </li>
+                        <li>
+                            <a href="tools/paletteGeneratorAccessibility.html" aria-label="Accessible Palette Generator, create a color palette with accessibility in mind">Accessible Palette</a>
+                        </li>
+                        <li>
+                            <a href="tools/Catalunya.html" aria-label="Catalonia, Generate a custom map">Catalonia</a>
+                        </li>
+                    </ul>
+                </nav>
+        </header>
+        <main>
+            <section id="toolsList">
+                <h2>There are some awesome tools.</h2>
                 <ul>
                     <li>
-                        <a href="tools/ColorContrastAccessibilityTest.html">Contrast checker</a>
+                        <article>
+                            <figure>
+                                <img src="img/colorAccessibilityTest.png" alt="Color contrast checker preview">
+                            </figure>
+                            <h3>
+                                <a href="tools/ColorContrastAccessibilityTest.html" aria-label="Check your color contrast for accessibility">Check color contrast</a>
+                            </h3>
+                            <p>Try me! I'll tell you if your colors have good contrast, and if they don't, I will suggest the closest accessible color.</p>
+                        </article>
                     </li>
                     <li>
-                        <a href="tools/paletteGeneratorAccessibility.html">Accessible Palette</a>
+                        <article>
+                            <figure>
+                                <img src="img/paletteGeneratorAccessibility.png" alt="Palette generator tool preview">
+                            </figure>
+                            <h3>
+                                <a href="tools/paletteGeneratorAccessibility.html" aria-label="Generate an accessible color palette">Generate accessible palette</a>
+                            </h3>
+                            <p>I propose some color variations to help you generate an accessible palette.</p>
+                        </article>
                     </li>
                     <li>
-                        <a href="tools/Catalunya.html">Catalonia</a>
+                        <article>
+                            <figure>
+                                <img src="img/Catalunya.png" alt="Catalonia interactive map preview">
+                            </figure>
+                            <h3>
+                                <a href="tools/Catalunya.html" aria-label="Explore Catalonia with an interactive map">Catalonia interactive map</a>
+                            </h3>
+                            <p>Do you want to showcase some places in Catalonia? This map will help you. You can customize it as you like.</p>
+                        </article>
                     </li>
                 </ul>
-            </nav>
-    </header>
-    <main>
-    <h2>
-        There are some awesome tools.
-    </h2>
-    <section id="toolsList">
-        <ul>
-            <li>
-                <article>
-                    <figure>
-                        <img src="img/colorAccessibilityTest.png">
-                    </figure>
-                    <h3><a href="tools/ColorContrastAccessibilityTest.html">Check color contrast</a></h3>
-                    <p>Try me! I'll tell you if your colors have a good contrast and if they isn't, I should suggest the most similar color.</p>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <figure>
-                        <img src="img/paletteGeneratorAccessibility.png">
-                    </figure>
-                    <h3><a href="tools/paletteGeneratorAccessibility.html">Generate accessible palette</a></h3>
-                    <p>I'll prupose some color's variations to generate an accessible palette.</p>
-                </article>
-            </li>
-            <li>
-                <article>
-                    <figure>
-                        <img src="img/Catalunya.png">
-                    </figure>
-                    <h3><a href="tools/Catalunya.html">Catalonia interactive map</a></h3>
-                    <p>Do you want to show somewere of Catalonia, in this map I'll help you width it. You can customize the map.</p>
-                </article>
-            </li>
-        </ul>
-    </section>
-    </main>
-    <footer>
-        <p> <a href="https://joanprenafeta.github.io/Awesome-Tools/">Awesome Tools</a> by <a href="https://es.linkedin.com/in/joan-prenafeta-sur%C3%ADs-162254108">Joan Prenafeta</a> </p>
-        
-        <p>Hope yoy enjoy it!</p>
-    </footer>
-</body>
+            </section>
+
+            <section id="aboutMe">
+                <figure>
+                    <img src="img/Avatar.svg" alt="Avatar of Joan Prenafeta, UX/UI designer">
+                </figure>
+                <div class="text">
+                    <h2>Joan Prenafeta</h2>
+                    <p>
+                        Hi! I’m Joan, a UX/UI designer with experience in front-end development. I previously worked as a Full Stack developer, although I was always more drawn to front-end and, especially, UX/UI design. That’s why I decided to specialize, and now I’ve spent over three years dedicated to creating intuitive and engaging user experiences.
+                    </p>
+                    <p>
+                        My technical background and development experience allow me to fully understand how designs translate into functional code and vice versa. I work with tools like Figma, Adobe XD, and the Adobe ecosystem in general (Photoshop, Illustrator, etc.), as well as front-end technologies such as HTML, CSS, and JavaScript.
+                    </p>
+                    <p>
+                        Did you like what you’ve read so far? Great, because there’s much more I can offer. Feel free to contact me!
+                    </p>
+                    <a href="mailto:prenafeta.joan@gmail.com" title="Send an email to Joan Prenafeta" aria-label="Send an email to Joan Prenafeta" class="btn">Send me an email!</a>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p> 
+                <a href="index.html" title="Go to Awesome Tools main page">Awesome Tools</a> 
+                by 
+                <a href="https://es.linkedin.com/in/joan-prenafeta-sur%C3%ADs-162254108" target="_blank" aria-label="Link to Joan's profile on LinkedIn, opens in a new tab" title="Visit Joan's LinkedIn profile (opens a new tab)">Joan Prenafeta</a>
+            </p>
+            <p>Hope you enjoy it!</p>
+        </footer>
+    </body>
 </html>
