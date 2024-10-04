@@ -1,0 +1,192 @@
+:root{
+    --header-bg: rgba(255,255,255,0.8);
+    --header-color: #212121;
+    --base-shadow: 0 10px 20px rgba(0,0,0,0.25);
+    --accent-color: #009688;
+    accent-color: var(--accent-color);
+    --link-color: #004d40;
+    --link-color-hover: var(--accent-color);
+    --footer-bg: #c7d1d0;
+    --footer-color: #00665c;
+    --spacing-ingline: 165px;
+    --border-radius: 20px;
+    --regular-padding: 10px;
+    --text-color: #212121;
+}
+
+body{
+    font-family: "Noto Sans", sans-serif;
+    margin: 0;
+    margin-top: 120px;
+    color: var(--text-color);
+}
+
+a{
+    text-decoration: none;
+    color: var(--link-color);
+}
+
+a:hover{
+    text-decoration: underline;
+    color: var(--link-color-hover);
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Header */
+header.custom-header{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    box-shadow: var(--base-shadow);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: var(--border-radius);
+    max-height: 100px;
+}
+header.custom-header .site-logo{
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 16px;
+}
+header.custom-header .site-logo img{
+    max-width: 60px;
+    aspect-ratio: 1;
+    border-radius: calc(var(--border-radius) - var(--regular-padding));
+}
+
+header.custom-header .site-logo a{
+    color: var(--header-color);
+    text-decoration: none;
+    font-size: 2rem;
+}
+header.custom-header .site-logo a::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+header.custom-header .site-logo a:hover{
+    color: var(--accent-color);
+}
+
+header.custom-header nav ul{
+    list-style-type: none;
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    padding-inline: 20px;
+}
+
+header.custom-header nav ul a{
+    font-size: 1.25rem;
+}
+
+/*Footer*/
+footer{
+    background-color: var(--footer-bg);
+    color: var(--footer-color);
+    padding: 10px var(--spacing-ingline);
+    max-width: 100vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+/*Main*/
+main{
+    padding-inline: var(--spacing-ingline);
+    display: flex;
+    flex-direction: column;
+    min-height: calc (100vh - 120px);
+}
+
+body.portada main section#toolsList{
+    flex-grow: 1;
+}
+
+body.portada main section#toolsList ul{ 
+    list-style-type: none;
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+body.portada main section#toolsList ul li{
+    display: flex;
+}
+
+body.portada main section#toolsList ul li article{
+    width: 100%;
+    position: relative;
+}
+
+body.portada main section#toolsList ul li article figure{
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+    border-radius: var(--border-radius);
+    transition: all 0.2s;
+}
+
+body.portada main section#toolsList ul li article figure img
+{
+    width: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 0.2s;
+}
+
+body.portada main section#toolsList ul li article h3{
+    margin: 0;
+}
+
+body.portada main section#toolsList ul li article a::before {
+    position: absolute;
+    content: "";
+    inset: 0;
+}
+
+body.portada main section#toolsList ul li article p{
+    margin-top: 8px;
+    opacity: 0.6;
+}
+
+body.portada main section#toolsList ul li article:has(a:hover) figure img{
+    transform: scale(1.1);
+}
+body.portada main section#toolsList ul li article:has(a:hover) figure{
+    box-shadow: var(--base-shadow);
+}
