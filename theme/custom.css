@@ -37,7 +37,9 @@
 
 /*Desktop*/
 @media (min-width: 1200px) {
-
+    body{
+        margin-top: 120px;
+    }
 }
 
 
@@ -45,7 +47,7 @@ body{
     font-family: "Noto Sans", sans-serif;
     font-size: var(--font-size-base);
     margin: 0;
-    margin-top: 120px;
+    margin-top: 200px;
     color: var(--text-color);
     background: var(--page-bg);
 }
