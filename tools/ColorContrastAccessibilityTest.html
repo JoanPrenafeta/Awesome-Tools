@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< Updated upstream
 
 <head>
     <meta charset="utf-8">
@@ -9,12 +10,55 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+=======
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contrast checker | Awesome tools</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../scripts/ColorContrastAccessibilityTest.js"></script>
+    <link rel="stylesheet" href="../theme/custom.css" />
+  </head>
 
-</head>
+  <body class="ColorContrastAccessibilityTest">
+    <header class="custom-header">
+      <figure class="site-logo">
+        <img src="../img/Avatar.svg" alt="Go to main page" />
+        <figcaption>
+          <a href="../index.html">Awesome Tools</a>
+        </figcaption>
+      </figure>
+      <h1 class="sr-only">Contrast checker by Joan Prenafeta</h1>
+>>>>>>> Stashed changes
 
-<body>
-    <h1>PARÀMETRES</h1>
-    <div class="params">
+      <nav id="awesome-tools" role="navigation" aria-label="Main navigation">
+        <ul>
+          <li>
+            <a
+              href="../tools/ColorContrastAccessibilityTest.html"
+              aria-label="Contrast checker, test the color contrast for accessibility"
+              class="selected"
+              >Contrast checker</a
+            >
+          </li>
+          <li>
+            <a
+              href="../tools/paletteGeneratorAccessibility.html"
+              aria-label="Accessible Palette Generator, create a color palette with accessibility in mind"
+              >Accessible Palette</a
+            >
+          </li>
+          <li>
+            <a
+              href="../tools/Catalunya.html"
+              aria-label="Catalonia, Generate a custom map"
+              >Catalonia</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <section class="params">
         <label for="ppal_color">Color principal:</label>
         <input type="color" name="ppal_color" id="ppal_color" />
         <input type="text" name="ppal_color_text" id="ppal_color_text" placeholder="HEX Color" maxlength="8" style="margin-right: 20px;max-width: 80px;text-transform: uppercase;" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
@@ -30,7 +74,7 @@
             <option value="AAA">AAA (7:1)</option>
         </select>
         <button id="css-generator" style="margin-right: 20px;">Generar Variables</button>
-    </div>
+    </section>
     <div class="example-color">
         <h1>Exemple</h1>
         <p>Aquest és un text d'exemple</p>
@@ -775,5 +819,3 @@
         })
     </script>
 </body>
-
-</html>
