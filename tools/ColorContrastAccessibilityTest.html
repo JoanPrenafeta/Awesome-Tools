@@ -1,16 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< Updated upstream
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Color Accessibility test</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-=======
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -18,18 +7,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="../scripts/ColorContrastAccessibilityTest.js"></script>
     <link rel="stylesheet" href="../theme/custom.css" />
+    <script src="https://kit.fontawesome.com/78cae735db.js" crossorigin="anonymous"></script>
   </head>
 
   <body class="ColorContrastAccessibilityTest">
-    <header class="custom-header">
-      <figure class="site-logo">
-        <img src="../img/Avatar.svg" alt="Go to main page" />
-        <figcaption>
-          <a href="../index.html">Awesome Tools</a>
-        </figcaption>
-      </figure>
+    <header class="custom-header fixed">
+        <a href="../index.html" class="h3 site-logo" title="Go to main page"><i class="fa-solid fa-brush"></i>Awesome Tools</a>
       <h1 class="sr-only">Contrast checker by Joan Prenafeta</h1>
->>>>>>> Stashed changes
 
       <nav id="awesome-tools" role="navigation" aria-label="Main navigation">
         <ul>
@@ -59,763 +43,867 @@
       </nav>
     </header>
     <section class="params">
-        <label for="ppal_color">Color principal:</label>
+      <div class="field">
+        <label for="ppal_color">Fore color:</label>
+        <input type="text" name="ppal_color_text" id="ppal_color_text" placeholder="HEX Color" maxlength="8" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
         <input type="color" name="ppal_color" id="ppal_color" />
-        <input type="text" name="ppal_color_text" id="ppal_color_text" placeholder="HEX Color" maxlength="8" style="margin-right: 20px;max-width: 80px;text-transform: uppercase;" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
-        <button id="swapColors" style="margin-right: 20px;">Intercanvia</button>
-        <label for="bg_color">Color de fons</label>
+      </div>
+      <div class="field">
+        <label for="bg_color">Background color:</label>
+        <input type="text" name="bg_color_text" id="bg_color_text" placeholder="HEX Color" maxlength="8" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
         <input type="color" name="bg_color" id="bg_color" />
-        <input type="text" name="bg_color_text" id="bg_color_text" placeholder="HEX Color" maxlength="8" style="margin-right: 20px;max-width: 80px;text-transform: uppercase;" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
-        <label for="contrast">Nivell d'Accessibilitat:</label>
-        <select id="contrast" name="contrast" style="margin-right: 20px;">
-            <option value="" selected>---</option>
-            <option value="A">A (3:1)</option>
-            <option value="AA">AA (4.5:1)</option>
-            <option value="AAA">AAA (7:1)</option>
+      </div>
+      <button id="swapColors"><span>Swap colors</span><i class="fa-solid fa-rotate"></i></button>
+      <div class="field">
+        <label for="contrast">WCAG Level:</label>
+        <select id="contrast" name="contrast">
+          <option value="">---</option>
+          <option value="A"><strong>A</strong> (3:1)</option>
+          <option value="AA" selected><strong>AA</strong> (4.5:1)</option>
+          <option value="AAA"><strong>AAA</strong> (7:1)</option>
         </select>
-        <button id="css-generator" style="margin-right: 20px;">Generar Variables</button>
+      </div>
     </section>
-    <div class="example-color">
-        <h1>Exemple</h1>
-        <p>Aquest és un text d'exemple</p>
-        <p id="contrast-lvl"></p>
-        <p id="color-pruposal"></p>
-    </div>
-    <div id="css-result">
-    </div>
-    <div id="color-result" style="display: flex; flex-direction: column;">
-    </div>
+    <main>
+        <section class="example-color">
+            <h2 class="sr-only">Color preview</h2>
+          <p class="h1">Make your colors shine!</p>
+          <p>Want to ensure your colors <strong>stand out for all users?</strong> Let’s find the perfect match!</p>
+          <p id="contrast-lvl"></p>
+          <p id="color-pruposal"></p>
+        </section>
+        <section id="All-Variables">
+            <h2>Color variables</h2>
+            <p><strong>--primary-dark-minimum</strong> is the closest color that meets the minimum contrast requirements for readability on a white background.<br><strong>--primary-light-minimum</strong> is the closest color that meets the minimum contrast requirements for readability on a black background.<br></p>
+            <div id="css-result"></div>
+            <button id="css-generator" alt="Copy css rules into clipboard">Copy CSS rules</button>
+        </section>
+        <section id="Color-Variations">
+            <h2>Color variations</h2>
+            <div id="color-result" style="display: flex; flex-direction: column"></div>
+        </section>
+    </main>
     <style type="text/css">
-        body {
-            font-family: arial;
-            -webkit-font-smoothing: antialiased;
-        }
+      /*body {
+        font-family: arial;
+        -webkit-font-smoothing: antialiased;
+      }
 
-        .mesPropera {
-            border-right: 2px solid var(--text-color);
-            border-left: 2px solid var(--text-color);
-        }
+      .mesPropera {
+        border-right: 2px solid var(--text-color);
+        border-left: 2px solid var(--text-color);
+      }
 
-        .colMesProper {
-            border-top: 2px solid var(--text-color);
-            border-bottom: 2px solid var(--text-color);
-        }
+      .colMesProper {
+        border-top: 2px solid var(--text-color);
+        border-bottom: 2px solid var(--text-color);
+      }
 
-        .params {
-            width: 100%;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            background: white;
-            border-bottom: 1px solid black;
-        }
+      .color.no-A p {
+        text-decoration: line-through red 2px double;
+      }
 
-        .example-color {
-            background: var(--bg-color);
-            color: var(--text-color-original);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px;
-            margin-top: 20px;
-        }
+      .color.accessible-unreach {
+        opacity: 0.2;
+      }
 
-        .color.no-A p {
-            text-decoration: line-through red 2px double;
-        }
+      .color .color-box {
+        transition: 0.2s;
+        position: relative;
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: black;
+      }
 
-        .color.accessible-unreach {
-            opacity: 0.2;
-        }
+      .color.mesProper p {
+        font-weight: bold;
+        font-size: 20px;
+        text-decoration: underline;
+      }
 
-        .color .color-box {
-            transition: 0.2s;
-            position: relative;
-            width: 100%;
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: black;
-        }
+      #color-pruposal {
+        text-align: center;
+      }
 
-        #css-result {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            width: 100%;
-            margin-top: 10px;
-        }
+      .color:hover .color-box,
+      .color.focus .color-box {
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        border-radius: 4px;
+        transform: scale(1.1);
+      }
 
-        #css-result p {
-            min-width: 300px;
-            flex-grow: 1;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0;
-        }
+      .color.selected .color-box {
+        box-shadow: inset 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
 
-        #css-result p strong{
-            margin-right: 8px;
-        }
+      .color {
+        width: 100%;
+      }
 
+      .color:hover label,
+      .color.focus label {
+        font-weight: bold;
+        transition: 0.3s;
+      }
 
-        .color.mesProper p {
-            font-weight: bold;
-            font-size: 20px;
-            text-decoration: underline;
-        }
+      .color-preview {
+        min-width: 300px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 30px;
+      }
 
-        #color-pruposal {
-            text-align: center;
-        }
-
-        .color:hover .color-box,
-        .color.focus .color-box {
-            cursor: pointer;
-            box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-            z-index: 2;
-            border-radius: 4px;
-            transform: scale(1.1);
-        }
-
-        .color.selected .color-box {
-            box-shadow: inset 0px 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .color {
-            width: 100%;
-        }
-
-        .color:hover label,
-        .color.focus label {
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .color-preview {
-            min-width: 300px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 30px;
-        }
-
-        .color-preview:hover {
-            cursor: pointer;
-            opacity: 0.9;
-            filter: saturate(50%) brightness(0.9);
-        }
+      .color-preview:hover {
+        cursor: pointer;
+        opacity: 0.9;
+        filter: saturate(50%) brightness(0.9);
+      }*/
     </style>
     <script type="text/javascript">
-        var starterColor = HSLToHex(Math.floor(Math.random() * (360 - 0 + 1)) + 0, Math.floor(Math.random() * (100 - 60 + 1)) + 50, Math.floor(Math.random() * (80 - 60 + 1)) + 60);
-        var ForeColor = "#000000";
-        if (ContrastCheck(starterColor)) {
-            ForeColor = "#FFFFFF";
+      var starterColor = HSLToHex(
+        Math.floor(Math.random() * (360 - 0 + 1)) + 0,
+        Math.floor(Math.random() * (100 - 60 + 1)) + 50,
+        Math.floor(Math.random() * (80 - 60 + 1)) + 60
+      );
+      var ForeColor = "#000000";
+      if (ContrastCheck(starterColor)) {
+        ForeColor = "#FFFFFF";
+      }
+
+      var TextMesProper = "";
+      var FonsMesProper = "";
+
+      var AccessibleColorText = "";
+      var AccessibleColorBg = "";
+
+      $("#ppal_color")[0].value = starterColor;
+      $("#ppal_color_text")[0].value = starterColor;
+
+      $("#bg_color")[0].value = ForeColor;
+      $("#bg_color_text")[0].value = ForeColor;
+      $("#color-pruposal").hide();
+
+      var ajustarLluminositatColor = function (color, percent, force = false) {
+        var colorHSL = hexToHSL(color);
+        if (colorHSL[2] > percent && percent > 50 && !force) {
+          colorHSL[2] = 100 - (100 - colorHSL[2]) / 2;
+        } else if (colorHSL[2] <= percent && percent <= 50 && !force) {
+          colorHSL[2] = colorHSL[2] / 2;
+        } else {
+          colorHSL[2] = percent;
+        }
+        return HSLToHex(colorHSL[0], colorHSL[1], colorHSL[2]);
+      };
+
+      var generarVariablesCss = function () {
+        var primaryColor = $("#ppal_color")[0].value;
+        var bgColor = $("#bg_color")[0].value;
+        var accesibilityLevel = $("#contrast")[0].value;
+
+        if (accesibilityLevel == "") accesibilityLevel = "AA";
+
+        var contrast = 0;
+        if (accesibilityLevel == "A") contrast = 3;
+        else if (accesibilityLevel == "AA") contrast = 4.5;
+        else if (accesibilityLevel == "AAA") contrast = 7;
+
+        ContrastAccesibility(primaryColor, bgColor);
+
+        var darkMinimum = SuggerirColors(
+          "#ffffff",
+          primaryColor,
+          accesibilityLevel
+        );
+        if (darkMinimum == "") {
+          darkMinimum = ajustarLluminositatColor(primaryColor, 30);
         }
 
-
-        var TextMesProper = "";
-        var FonsMesProper = "";
-
-        var AccessibleColorText = "";
-        var AccessibleColorBg = "";
-
-
-        $("#ppal_color")[0].value = starterColor;
-        $("#ppal_color_text")[0].value = starterColor;
-
-        $("#bg_color")[0].value = ForeColor;
-        $("#bg_color_text")[0].value = ForeColor;
-        $("#color-pruposal").hide();
-
-        var ajustarLluminositatColor = function (color, percent, force = false) {
-            var colorHSL = hexToHSL(color);
-            if (colorHSL[2]>percent && percent>50 && !force){
-                colorHSL[2] = 100-((100-colorHSL[2])/2)
-            }
-            else if (colorHSL[2]<=percent && percent<=50 && !force){
-                colorHSL[2] = colorHSL[2]/2;
-            }
-            else{
-                colorHSL[2]=percent;
-            }
-            return HSLToHex(colorHSL[0],colorHSL[1],colorHSL[2]);
+        if (ContrastAccesibility(darkMinimum, "#ffffff") < contrast) {
         }
 
-        var generarVariablesCss = function() {
-            var primaryColor = $("#ppal_color")[0].value;
-            var bgColor = $("#bg_color")[0].value;
-            var accesibilityLevel = $("#contrast")[0].value;
+        var Dark = ajustarLluminositatColor(primaryColor, 20);
 
-            if (accesibilityLevel == "") accesibilityLevel = "AA"
-
-            var contrast = 0;
-            if (accesibilityLevel == "A") contrast = 3;
-            else if (accesibilityLevel == "AA") contrast = 4.5;
-            else if (accesibilityLevel == "AAA") contrast = 7;
-
-            ContrastAccesibility(primaryColor, bgColor)
-
-            var darkMinimum = SuggerirColors('#ffffff', primaryColor, accesibilityLevel);
-            if (darkMinimum == '') {
-                darkMinimum = ajustarLluminositatColor(primaryColor,30);
-            }
-
-            if (ContrastAccesibility(darkMinimum, "#ffffff") < contrast){
-
-            }
-
-            var Dark = ajustarLluminositatColor(primaryColor,20);
-
-            if (ContrastAccesibility(Dark, "#ffffff") < contrast){
-
-            }
-
-            var LightMinimum = SuggerirColors('#000000', primaryColor, accesibilityLevel);
-            if (LightMinimum == '') {
-                   LightMinimum = ajustarLluminositatColor(primaryColor,70);
-            }
-
-            if (ContrastAccesibility(LightMinimum, "#000000") < contrast){
-
-            }
-            var Light = ajustarLluminositatColor(primaryColor,80);
-
-            if (ContrastAccesibility(Light, "#000000") < contrast){
-                
-            }
-
-            var PrimaryContrast = "";
-            if (ContrastCheck(primaryColor)){
-                //dark
-                PrimaryContrast = ajustarLluminositatColor(primaryColor,95,true);
-            }
-            else{
-                PrimaryContrast = ajustarLluminositatColor(primaryColor,1,true);
-            }
-            if (ContrastAccesibility(PrimaryContrast, primaryColor) < contrast){
-                if (ContrastCheck(PrimaryContrast)){
-                    //dark
-                    PrimaryContrast = ajustarLluminositatColor(primaryColor,100,true);
-                }
-                else{
-                    PrimaryContrast = ajustarLluminositatColor(primaryColor,0,true);
-                }
-            }
-
-            var textColor = ajustarLluminositatColor(primaryColor,5,true);
-            if (ContrastAccesibility(textColor, "#ffffff") < contrast){
-                textColor = ajustarLluminositatColor(primaryColor,1,true);
-            }
-
-
-            var DarkGray = SuggerirColors('#ffffff','#000000', "AAA");
-            var LightGray = SuggerirColors('#000000','#000000', "AAA");
-
-
-            var result = '';
-            result += '<p style="color:' + primaryColor + '; background: ' + bgColor + '"><strong>--primary-color: </strong>' + primaryColor + ';</p>'
-            result += '<p style="color:' + bgColor + '; background: ' + primaryColor + '"><strong>--background-color: </strong> ' + bgColor + ';</p>'
-
-            result += '<p style="color:' + darkMinimum + '; background: #ffffff;"><strong>--primary-dark-minimum: </strong>' + darkMinimum + ';</p>'
-
-            result += '<p style="color:' + Dark + '"><strong>--primary-dark: </strong> ' + Dark +';</p>';
-
-            result += '<p style="color:' + LightMinimum + '; background: #000000;"><strong>--primary-light-minimum: </strong>' + LightMinimum + ';</p>'
-
-            result += '<p style="color:' + Light + ' ; background: #000000;"><strong>--primary-light: </strong> ' + Light +';</p>';
-            
-            result += '<p style="color:' + PrimaryContrast + ' ; background: '+primaryColor+';"><strong>--primary-contrast: </strong> ' + PrimaryContrast +';</p>';
-
-            result += '<p style="color:' + textColor + ' ; background: #ffffff;"><strong>--text-color: </strong> ' + textColor +';</p>';
-
-            result += '<p style="background:' + LightGray + ' ; color: #000000;"><strong>--light-gray: </strong> ' + LightGray +';</p>';
-            result += '<p style="background:' + DarkGray + ' ; color: #ffffff;"><strong>--dark-gray: </strong> ' + DarkGray +';</p>';
-
-            $("#css-result")[0].innerHTML = result;
+        if (ContrastAccesibility(Dark, "#ffffff") < contrast) {
         }
 
-
-        function hexToHSL(H) {
-            // Convert hex to RGB first
-            let r = 0,
-                g = 0,
-                b = 0;
-            if (H.length == 4) {
-                r = "0x" + H[1] + H[1];
-                g = "0x" + H[2] + H[2];
-                b = "0x" + H[3] + H[3];
-            } else if (H.length == 7) {
-                r = "0x" + H[1] + H[2];
-                g = "0x" + H[3] + H[4];
-                b = "0x" + H[5] + H[6];
-            }
-            // Then to HSL
-            r /= 255;
-            g /= 255;
-            b /= 255;
-            let cmin = Math.min(r, g, b),
-                cmax = Math.max(r, g, b),
-                delta = cmax - cmin,
-                h = 0,
-                s = 0,
-                l = 0;
-
-            if (delta == 0)
-                h = 0;
-            else if (cmax == r)
-                h = ((g - b) / delta) % 6;
-            else if (cmax == g)
-                h = (b - r) / delta + 2;
-            else
-                h = (r - g) / delta + 4;
-
-            h = Math.round(h * 60);
-
-            if (h < 0)
-                h += 360;
-
-            l = (cmax + cmin) / 2;
-            s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
-            s = +(s * 100).toFixed(1);
-            l = +(l * 100).toFixed(1);
-
-            return [h, s, l];
+        var LightMinimum = SuggerirColors(
+          "#000000",
+          primaryColor,
+          accesibilityLevel
+        );
+        if (LightMinimum == "") {
+          LightMinimum = ajustarLluminositatColor(primaryColor, 70);
         }
 
-        function HSLToHex(h, s, l) {
-            s /= 100;
-            l /= 100;
+        if (ContrastAccesibility(LightMinimum, "#000000") < contrast) {
+        }
+        var Light = ajustarLluminositatColor(primaryColor, 80);
 
-            let c = (1 - Math.abs(2 * l - 1)) * s,
-                x = c * (1 - Math.abs((h / 60) % 2 - 1)),
-                m = l - c / 2,
-                r = 0,
-                g = 0,
-                b = 0;
-
-            if (0 <= h && h < 60) {
-                r = c;
-                g = x;
-                b = 0;
-            } else if (60 <= h && h < 120) {
-                r = x;
-                g = c;
-                b = 0;
-            } else if (120 <= h && h < 180) {
-                r = 0;
-                g = c;
-                b = x;
-            } else if (180 <= h && h < 240) {
-                r = 0;
-                g = x;
-                b = c;
-            } else if (240 <= h && h < 300) {
-                r = x;
-                g = 0;
-                b = c;
-            } else if (300 <= h && h < 360) {
-                r = c;
-                g = 0;
-                b = x;
-            }
-            // Having obtained RGB, convert channels to hex
-            r = Math.round((r + m) * 255).toString(16);
-            g = Math.round((g + m) * 255).toString(16);
-            b = Math.round((b + m) * 255).toString(16);
-
-            // Prepend 0s, if necessary
-            if (r.length == 1)
-                r = "0" + r;
-            if (g.length == 1)
-                g = "0" + g;
-            if (b.length == 1)
-                b = "0" + b;
-
-            return "#" + r + g + b;
+        if (ContrastAccesibility(Light, "#000000") < contrast) {
         }
 
-        function ContrastCheck(hex) { //false = light; true = dark
-            const r = parseInt(hex.slice(1, 3), 16);
-            const g = parseInt(hex.slice(3, 5), 16);
-            const b = parseInt(hex.slice(5, 7), 16);
-
-            return (r + g + b <= 382.5);
+        var PrimaryContrast = "";
+        if (ContrastCheck(primaryColor)) {
+          //dark
+          PrimaryContrast = ajustarLluminositatColor(primaryColor, 95, true);
+        } else {
+          PrimaryContrast = ajustarLluminositatColor(primaryColor, 1, true);
+        }
+        if (ContrastAccesibility(PrimaryContrast, primaryColor) < contrast) {
+          if (ContrastCheck(PrimaryContrast)) {
+            //dark
+            PrimaryContrast = ajustarLluminositatColor(primaryColor, 100, true);
+          } else {
+            PrimaryContrast = ajustarLluminositatColor(primaryColor, 0, true);
+          }
         }
 
-        var SuggerirColors = function(colorFixed, colorVariable, accesibilityLevel) {
-            var colorVariableHSL = hexToHSL(colorVariable);
-            var contrastLum = 500;
-            var result = "";
-            var contrast = 0;
-            if (accesibilityLevel == "A") contrast = 3;
-            else if (accesibilityLevel == "AA") contrast = 4.5;
-            else if (accesibilityLevel == "AAA") contrast = 7;
-            
-            var generateFullColorScale = function(H, S, L, steps) {
-                var palette = [];
-
-                var L1 = L;
-                for (i = 0; i < steps; i++) {
-                    L1 = i * (100 / steps);
-                    palette.push(HSLToHex(H, S, L1));
-                }
-                return palette;
-            }
-
-            var colorPalette = generateColorScale(colorVariableHSL[0], colorVariableHSL[1], colorVariableHSL[2], 100);
-
-            if ((colorFixed == "#ffffff" || colorFixed == "#000000") && (colorVariable == "#ffffff" || colorVariable == "#000000")){
-                if (colorFixed == "#000000") {
-                    for (x=0; x<=100; x++){
-                        var tmpColor = ajustarLluminositatColor(colorVariable, x, true);
-                        if (ContrastAccesibility(tmpColor, colorFixed)>contrast){
-                            return tmpColor;
-                        }
-                    }
-                }
-                else{
-                    for (x=100; x>=0; x--){
-                        var tmpColor = ajustarLluminositatColor(colorVariable, x, true);
-                        if (ContrastAccesibility(tmpColor, colorFixed)>contrast){
-                            return tmpColor;
-                        }
-                    }
-                }
-            }
-
-            if (ContrastCheck(colorFixed)){
-                //dark
-                for (x = colorPalette.length-1; x >= 0; x--) {
-                    var dif = ContrastAccesibility(colorPalette[x], colorFixed);
-                    
-                    if (dif >= contrast) {
-                        var tmpcolor = hexToHSL(colorPalette[x]);
-                        var TmpDif = Math.abs(tmpcolor[2] - colorVariableHSL[2]);
-                        if (TmpDif < contrastLum) {
-                            contrastLum = TmpDif;
-                            result = colorPalette[x];
-                        }
-                    }
-                }
-            }
-            else{
-                //light
-                for (x = 0; x < colorPalette.length; x++) {
-                    var dif = ContrastAccesibility(colorPalette[x], colorFixed);
-                    
-                    if (dif >= contrast) {
-                        var tmpcolor = hexToHSL(colorPalette[x]);
-                        var TmpDif = Math.abs(tmpcolor[2] - colorVariableHSL[2]);
-                        if (TmpDif < contrastLum) {
-                            contrastLum = TmpDif;
-                            result = colorPalette[x];
-                        }
-                    }
-                }
-            }
-
-            return result;
-
+        var textColor = ajustarLluminositatColor(primaryColor, 5, true);
+        if (ContrastAccesibility(textColor, "#ffffff") < contrast) {
+          textColor = ajustarLluminositatColor(primaryColor, 1, true);
         }
 
-        var printPruposalColor = function() {
-            var textColor = $("#ppal_color")[0].value;
-            var bgColor = $("#bg_color")[0].value;
-            var accesibilityLevel = $("#contrast")[0].value;
+        var DarkGray = SuggerirColors("#ffffff", "#000000", "AAA");
+        var LightGray = SuggerirColors("#000000", "#000000", "AAA");
 
-            var textPrupose = SuggerirColors(bgColor, textColor, accesibilityLevel);
-            var bgPrupose = SuggerirColors(textColor, bgColor, accesibilityLevel);
+        var result = "";
+        result +=
+          '<p style="color:' +
+          primaryColor +
+          "; background: " +
+          bgColor +
+          '"><strong>--primary-color: </strong>' +
+          primaryColor +
+          ";</p>";
+        document.documentElement.style.setProperty("--primary-color", primaryColor); 
+        result +=
+          '<p style="color:' +
+          bgColor +
+          "; background: " +
+          primaryColor +
+          '"><strong>--background-color: </strong> ' +
+          bgColor +
+          ";</p>";
+        document.documentElement.style.setProperty("--background-color", bgColor); 
 
-            var str = "Amb nivell " + accesibilityLevel + ":<br/>"
-            if (bgPrupose != "") {
-                str += "Si vols mantenir el color de text, prova el color de fons (" + bgPrupose + ") <br/>"
-            } else {
-                str += "Si vols mantenir el color de text, no hi ha cap combinació de colors amb aquest nivell d'accessibilitat. <br/>"
-            }
-            if (textPrupose != "") {
-                str += "Si vols mantenir el color de fons, prova el color de text (" + textPrupose + ") <br/>"
-                $("#color-pruposal").css("color", textPrupose)
-            } else {
-                str += "Si vols mantenir el color de fons, no hi ha cap combinació de colors amb aquest nivell d'accessibilitat."
-                $("#color-pruposal").css("color", textColor)
-            }
+        result +=
+          '<p style="color:' +
+          Dark +
+          '"><strong>--primary-dark: </strong> ' +
+          Dark +
+          ";</p>";
+          document.documentElement.style.setProperty("--primary-dark", Dark);
+          
+        result +=
+          '<p style="color:' +
+          Light +
+          ' ; background: #000000;"><strong>--primary-light: </strong> ' +
+          Light +
+          ";</p>";
+          document.documentElement.style.setProperty("--primary-light", Light);
+        result +=
+          '<p style="color:' +
+          darkMinimum +
+          '; background: #ffffff;"><strong>--primary-dark-minimum: </strong>' +
+          darkMinimum +
+          ";</p>";
+          document.documentElement.style.setProperty("--primary-dark-minimum", darkMinimum);
 
-            $("#color-pruposal")[0].innerHTML = str;
+        result +=
+          '<p style="color:' +
+          LightMinimum +
+          '; background: #000000;"><strong>--primary-light-minimum: </strong>' +
+          LightMinimum +
+          ";</p>";
+          document.documentElement.style.setProperty("--primary-light-minimum", LightMinimum);
 
-            var contrast = 0;
-            if (accesibilityLevel == "A") contrast = 3;
-            else if (accesibilityLevel == "AA") contrast = 4.5;
-            else if (accesibilityLevel == "AAA") contrast = 7;
+        result +=
+          '<p style="color:' +
+          PrimaryContrast +
+          " ; background: " +
+          primaryColor +
+          ';"><strong>--primary-contrast: </strong> ' +
+          PrimaryContrast +
+          ";</p>";
+          document.documentElement.style.setProperty("--primary-contrast", PrimaryContrast);
 
-            var lum = ContrastAccesibility(textColor, bgColor);
-            if (lum <= contrast) {
-                $("#color-pruposal").show();
-            } else {
-                $("#color-pruposal").hide();
-            }
+        result +=
+          '<p style="color:' +
+          textColor +
+          ' ; background: #ffffff;"><strong>--text-color: </strong> ' +
+          textColor +
+          ";</p>";
+          document.documentElement.style.setProperty("--text-color", textColor);
+
+        result +=
+          '<p style="background:' +
+          LightGray +
+          ' ; color: #000000;"><strong>--light-gray: </strong> ' +
+          LightGray +
+          ";</p>";
+          document.documentElement.style.setProperty("--light-gray", LightGray);
+        result +=
+          '<p style="background:' +
+          DarkGray +
+          ' ; color: #ffffff;"><strong>--dark-gray: </strong> ' +
+          DarkGray +
+          ";</p>";
+          document.documentElement.style.setProperty("--dark-gray", DarkGray);
+
+        $("#css-result")[0].innerHTML = result;
+      };
+
+      function hexToHSL(H) {
+        // Convert hex to RGB first
+        let r = 0,
+          g = 0,
+          b = 0;
+        if (H.length == 4) {
+          r = "0x" + H[1] + H[1];
+          g = "0x" + H[2] + H[2];
+          b = "0x" + H[3] + H[3];
+        } else if (H.length == 7) {
+          r = "0x" + H[1] + H[2];
+          g = "0x" + H[3] + H[4];
+          b = "0x" + H[5] + H[6];
         }
+        // Then to HSL
+        r /= 255;
+        g /= 255;
+        b /= 255;
+        let cmin = Math.min(r, g, b),
+          cmax = Math.max(r, g, b),
+          delta = cmax - cmin,
+          h = 0,
+          s = 0,
+          l = 0;
 
+        if (delta == 0) h = 0;
+        else if (cmax == r) h = ((g - b) / delta) % 6;
+        else if (cmax == g) h = (b - r) / delta + 2;
+        else h = (r - g) / delta + 4;
 
-        var show = function(paletaText, paletaBg) {
-            var result = "";
-            result += "<h1> Results </h1>"
-            result += '<div style="display: flex;flex-direction: row;align-self: center;justify-content: space-evenly;width: 100%;"> ';
-            result += '<div style="display: flex; flex-direction: column; flex-grow: 1;"> ';
-            result += '<div class="color AAA AA A" style="text-align: center;position: sticky;top: 68px;z-index: 1; background: white"><div class="color-box ' + '"><p> </p></div></div>'
-            for (y = 0; y < paletaBg.length; y++) {
-                var bgColor = paletaBg[y];
-                var classe = "";
-                if (bgColor == FonsMesProper) {
-                    classe = "mesProper colMesProper"
-                }
-                result += '<div class="color AAA AA A ' + classe + '" style="text-align: center;position: sticky;top: 0;z-index: 1; background: white"><div class="color-box ' + '"><p>' + paletaBg[y] + '</p></div></div>'
-            }
-            result += "</div>";
-            var classColProp = "";
-            var classRowProp = "";
-            for (x = 0; x < paletaText.length; x++) {
-                if (paletaText[x] == TextMesProper) classColProp = "mesPropera";
-                else classColProp = ""
-                result += '<div style="display: flex; flex-direction: column; flex-grow: 1;" class="' + classColProp + '"> ';
-                var textColor = paletaText[x];
-                var classe = "";
-                if (textColor == TextMesProper) {
-                    classe = "mesProper"
-                }
-                result += '<div class="color AAA AA A ' + classe + '" style="text-align: center;position: sticky;top: 68px;z-index: 1; background: white"><div class="color-box ' + '"><p>' + textColor + '</p></div></div>'
-                for (y = 0; y < paletaBg.length; y++) {
-                    var bgColor = paletaBg[y];
-                    result += printColor(textColor, bgColor, bgColor == FonsMesProper);
-                }
-                result += "</div>";
+        h = Math.round(h * 60);
 
-            }
-            result += "</div>";
-            $("#color-result")[0].innerHTML = result;
-            $("#contrast").change()
+        if (h < 0) h += 360;
+
+        l = (cmax + cmin) / 2;
+        s = delta == 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+        s = +(s * 100).toFixed(1);
+        l = +(l * 100).toFixed(1);
+
+        return [h, s, l];
+      }
+
+      function HSLToHex(h, s, l) {
+        s /= 100;
+        l /= 100;
+
+        let c = (1 - Math.abs(2 * l - 1)) * s,
+          x = c * (1 - Math.abs(((h / 60) % 2) - 1)),
+          m = l - c / 2,
+          r = 0,
+          g = 0,
+          b = 0;
+
+        if (0 <= h && h < 60) {
+          r = c;
+          g = x;
+          b = 0;
+        } else if (60 <= h && h < 120) {
+          r = x;
+          g = c;
+          b = 0;
+        } else if (120 <= h && h < 180) {
+          r = 0;
+          g = c;
+          b = x;
+        } else if (180 <= h && h < 240) {
+          r = 0;
+          g = x;
+          b = c;
+        } else if (240 <= h && h < 300) {
+          r = x;
+          g = 0;
+          b = c;
+        } else if (300 <= h && h < 360) {
+          r = c;
+          g = 0;
+          b = x;
         }
+        // Having obtained RGB, convert channels to hex
+        r = Math.round((r + m) * 255).toString(16);
+        g = Math.round((g + m) * 255).toString(16);
+        b = Math.round((b + m) * 255).toString(16);
 
-        var printColor = function(textColor, bgColor, mesProper) {
-            var textColorCSS = textColor.replaceAll("#", "");
-            var bgColorCSS = bgColor.replaceAll("#", "");
-            document.documentElement.style.setProperty('--' + textColorCSS, textColor);
-            document.documentElement.style.setProperty('--' + bgColorCSS, bgColor);
+        // Prepend 0s, if necessary
+        if (r.length == 1) r = "0" + r;
+        if (g.length == 1) g = "0" + g;
+        if (b.length == 1) b = "0" + b;
 
-            var accesibilityClass = ""
-            var contrast = ContrastAccesibility(textColor, bgColor);
-            if (contrast < 3) {
-                accesibilityClass = "no-A"
-            } else if (contrast < 4.5) {
-                accesibilityClass = "A"
-            } else if (contrast < 7) {
-                accesibilityClass = "AA A"
-            } else {
-                accesibilityClass = "AAA AA A"
-            }
-            var colorProper = "";
-            if (mesProper) colorProper = " colMesProper ";
+        return "#" + r + g + b;
+      }
 
-            return '<div class="color ' + accesibilityClass + colorProper + '"" style="text-align: center; "><div style="background: var(--' + bgColorCSS + '); color: var(--' + textColorCSS + ')" class="color-box ' + '"><p>(' + Math.round(contrast * 10) / 10 + ':1)</p></div></div>'
-        }
+      function ContrastCheck(hex) {
+        //false = light; true = dark
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
 
-        var AplicarColors = function() {
-            var textColor = $("#ppal_color")[0].value;
-            var bgColor = $("#bg_color")[0].value;
-            document.documentElement.style.setProperty('--text-color-original', textColor);
-            document.documentElement.style.setProperty('--bg-color', bgColor);
+        return r + g + b <= 382.5;
+      }
 
-            var contrastRatio = ContrastAccesibility(textColor, bgColor);
+      var SuggerirColors = function (
+        colorFixed,
+        colorVariable,
+        accesibilityLevel
+      ) {
+        var colorVariableHSL = hexToHSL(colorVariable);
+        var contrastLum = 500;
+        var result = "";
+        var contrast = 0;
+        if (accesibilityLevel == "A") contrast = 3;
+        else if (accesibilityLevel == "AA") contrast = 4.5;
+        else if (accesibilityLevel == "AAA") contrast = 7;
 
-            var lvl = "";
-            if (contrastRatio < 3) {
-                lvl += "No accessible!!! (" + Math.round(contrastRatio * 10) / 10 + ":1)";
-            } else if (contrastRatio < 4.5) {
-                lvl = "A (" + Math.round(contrastRatio * 10) / 10 + ":1)";
-            } else if (contrastRatio < 7) {
-                lvl = "AA (" + Math.round(contrastRatio * 10) / 10 + ":1)";
-            } else  if (contrastRatio <21){
-                lvl = "AAA (" + Math.round(contrastRatio * 10) / 10 + ":1)";
-            } else {
-                lvl = "Vigila, tot i tenir el nivell AAA (" + Math.round(contrastRatio * 10) / 10 + ":1), un contrast tan elevat pot ocasionar dificultats visuals a aquelles persones amb sensibilitat al contrast. Prova a canviar el #000000 per #111111."
-            }
-            $("#contrast-lvl")[0].innerText = lvl;
+        var generateFullColorScale = function (H, S, L, steps) {
+          var palette = [];
 
-            GenerarComparacions(textColor, bgColor);
-
-            printPruposalColor();
-
-            generarVariablesCss();            
-        }
-
-        var ColorMesProper = function(paleta, color) {
-            var MesProper = "";
-            var colorHSL = hexToHSL(color);
-            var DiferenciaL = 500;
-            for (i = 0; i < paleta.length; i++) {
-                var tmpcolor = hexToHSL(paleta[i]);
-                var TmpDif = Math.abs(tmpcolor[2] - colorHSL[2]);
-                if (TmpDif < DiferenciaL) {
-                    DiferenciaL = TmpDif;
-                    MesProper = paleta[i];
-                }
-            }
-            return MesProper;
-        }
-
-        var GenerarComparacions = function(textColor, bgColor) {
-            var textColorHSL = hexToHSL(textColor);
-            var paletaText = generateColorScale(textColorHSL[0], textColorHSL[1], textColorHSL[2], 10)
-            var bgColorHSL = hexToHSL(bgColor);
-            var paletaBg = generateColorScale(bgColorHSL[0], bgColorHSL[1], bgColorHSL[2], 50)
-
-
-            TextMesProper = ColorMesProper(paletaText, textColor);
-            FonsMesProper = ColorMesProper(paletaBg, bgColor);
-
-            show(paletaText, paletaBg);
-        }
-
-        var hexFormatChecker = function(color) {
-            if (color.length > 0) {
-                let regEx = /^[0-9a-fA-F]+$/;
-                color = color.replace("#", "")
-                let isHex = regEx.test(color);
-
-                if (!isHex) {
-                    color = color.slice(0, -1);
-                }
-
-                if (color.length > 6) {
-                    color = color.slice(0, 6)
-                }
-
-                if (color.length > 0 && color.charAt(0) != "#") {
-                    color = "#" + color;
-                }
-            }
-            return color
+          var L1 = L;
+          for (i = 0; i < steps; i++) {
+            L1 = i * (100 / steps);
+            palette.push(HSLToHex(H, S, L1));
+          }
+          return palette;
         };
 
-        function ContrastAccesibility(Color1, Color2) {
-            var fnlluminositatColor = function(color) {
-                var r = parseInt(color.slice(1, 3), 16);
-                var g = parseInt(color.slice(3, 5), 16);
-                var b = parseInt(color.slice(5, 7), 16);
+        var colorPalette = generateColorScale(
+          colorVariableHSL[0],
+          colorVariableHSL[1],
+          colorVariableHSL[2],
+          100
+        );
 
-                r = r / 255;
-                g = g / 255;
-                b = b / 255;
-                if (r > 0.03928) { r = Math.pow(((r + 0.055) / 1.055), 2.4) } else { r = r / 12.92 }
-                if (g > 0.03928) { g = Math.pow(((g + 0.055) / 1.055), 2.4) } else { g = g / 12.92 }
-                if (b > 0.03928) { b = Math.pow(((b + 0.055) / 1.055), 2.4) } else { b = b / 12.92 }
-
-                var result = (r * 0.2126) + (g * 0.7152) + (b * 0.0722);
-                return result;
+        if (
+          (colorFixed == "#ffffff" || colorFixed == "#000000") &&
+          (colorVariable == "#ffffff" || colorVariable == "#000000")
+        ) {
+          if (colorFixed == "#000000") {
+            for (x = 0; x <= 100; x++) {
+              var tmpColor = ajustarLluminositatColor(colorVariable, x, true);
+              if (ContrastAccesibility(tmpColor, colorFixed) > contrast) {
+                return tmpColor;
+              }
             }
-            var lum1 = fnlluminositatColor(Color1);
-            var lum2 = fnlluminositatColor(Color2);
-            if (lum2 > lum1) {
-                return (lum2 + 0.05) / (lum1 + 0.05)
+          } else {
+            for (x = 100; x >= 0; x--) {
+              var tmpColor = ajustarLluminositatColor(colorVariable, x, true);
+              if (ContrastAccesibility(tmpColor, colorFixed) > contrast) {
+                return tmpColor;
+              }
             }
-            return (lum1 + 0.05) / (lum2 + 0.05)
+          }
         }
 
-        var generateColorScale = function(H, S, L, steps) {
-            var palette = [];
+        if (ContrastCheck(colorFixed)) {
+          //dark
+          for (x = colorPalette.length - 1; x >= 0; x--) {
+            var dif = ContrastAccesibility(colorPalette[x], colorFixed);
 
-            var L1 = L;
-            for (i = 0; i < steps; i++) {
-                L1 = i * (100 / steps);
-                if (L1 == 0) L1 = 5;
-                else if (L1 == 100) L1 = 98;
-
-                palette.push(HSLToHex(H, S, L1));
+            if (dif >= contrast) {
+              var tmpcolor = hexToHSL(colorPalette[x]);
+              var TmpDif = Math.abs(tmpcolor[2] - colorVariableHSL[2]);
+              if (TmpDif < contrastLum) {
+                contrastLum = TmpDif;
+                result = colorPalette[x];
+              }
             }
-            return palette;
+          }
+        } else {
+          //light
+          for (x = 0; x < colorPalette.length; x++) {
+            var dif = ContrastAccesibility(colorPalette[x], colorFixed);
+
+            if (dif >= contrast) {
+              var tmpcolor = hexToHSL(colorPalette[x]);
+              var TmpDif = Math.abs(tmpcolor[2] - colorVariableHSL[2]);
+              if (TmpDif < contrastLum) {
+                contrastLum = TmpDif;
+                result = colorPalette[x];
+              }
+            }
+          }
         }
-        AplicarColors()
 
-        $("#ppal_color").change(function(e) {
-            $("#ppal_color_text")[0].value = this.value;
-            AplicarColors();
-        });
+        return result;
+      };
 
-        $("#swapColors").click(function() {
-            var textColor = $("#ppal_color")[0].value;
-            var bgColor = $("#bg_color")[0].value;
+      var printPruposalColor = function () {
+        var textColor = $("#ppal_color")[0].value;
+        var bgColor = $("#bg_color")[0].value;
+        var accesibilityLevel = $("#contrast")[0].value;
 
-            $("#bg_color")[0].value = textColor;
-            $("#ppal_color")[0].value = bgColor;
-            $("#bg_color_text")[0].value = textColor;
-            $("#ppal_color_text")[0].value = bgColor;
-            AplicarColors()
-        });
+        var textPrupose = SuggerirColors(bgColor, textColor, accesibilityLevel);
+        var bgPrupose = SuggerirColors(textColor, bgColor, accesibilityLevel);
 
-        $("#ppal_color_text").change(function(e) {
-            let color = this.value;
-            color = hexFormatChecker(color);
+        var str = "Using " + accesibilityLevel + " level:<br/>";
+        if (bgPrupose != "") {
+          str +=
+            "If you want to keep the text color, try the background color (" +
+            bgPrupose +
+            ") <br/>";
+        } else {
+          str +=
+            "OPS! If you want to keep the background color, there is no color combination that meets this accessibility level. <br/>";
+        }
+        if (textPrupose != "") {
+          str +=
+            "On the other hand, if you want to keep the text color, try the background color (" +textPrupose +") <br/>";
+          $("#color-pruposal").css("color", textPrupose);
+        } else {
+          str +=
+            "Excuse me... If you want to keep the text color, there is no color combination that meets this accessibility level.";
+          $("#color-pruposal").css("color", textColor);
+        }
 
-            if (color.length == 7) {
-                this.value = color;
-                $("#ppal_color")[0].value = color;
-                AplicarColors();
-            }
-        });
+        $("#color-pruposal")[0].innerHTML = str;
 
-        $("#bg_color").change(function(e) {
-            $("#bg_color_text")[0].value = this.value;
-            AplicarColors();
-        });
+        var contrast = 0;
+        if (accesibilityLevel == "A") contrast = 3;
+        else if (accesibilityLevel == "AA") contrast = 4.5;
+        else if (accesibilityLevel == "AAA") contrast = 7;
 
-        $("#bg_color_text").change(function(e) {
-            let color = this.value;
-            color = hexFormatChecker(color);
+        var lum = ContrastAccesibility(textColor, bgColor);
+        if (lum <= contrast) {
+          $("#color-pruposal").show();
+        } else {
+          $("#color-pruposal").hide();
+        }
+      };
 
-            if (color.length == 7) {
-                this.value = color;
-                $("#bg_color")[0].value = color;
-                AplicarColors();
-            }
-        });
+      var show = function (paletaText, paletaBg) {
+        var result = "";
+        result +=
+          '<div style="display: flex;flex-direction: row;align-self: center;justify-content: space-evenly;width: 100%;"> ';
+        result +=
+          '<div style="display: flex; flex-direction: column; flex-grow: 1;"> ';
+        result +=
+          '<div class="color AAA AA A" style="text-align: center;position: sticky;top: 0;z-index: 1; background: white"><div class="color-box ' +
+          '"><p> </p></div></div>';
+        for (y = 0; y < paletaBg.length; y++) {
+          var bgColor = paletaBg[y];
+          var classe = "";
+          if (bgColor == FonsMesProper) {
+            classe = "mesProper colMesProper";
+          }
+          result +=
+            '<div class="color AAA AA A ' +
+            classe +
+            '" style="text-align: center;position: sticky;top: 0;z-index: 1; background: white"><div class="color-box ' +
+            '"><p>' +
+            paletaBg[y] +
+            "</p></div></div>";
+        }
+        result += "</div>";
+        var classColProp = "";
+        var classRowProp = "";
+        for (x = 0; x < paletaText.length; x++) {
+          if (paletaText[x] == TextMesProper) classColProp = "mesPropera";
+          else classColProp = "";
+          result +=
+            '<div style="display: flex; flex-direction: column; flex-grow: 1;" class="' +
+            classColProp +
+            '"> ';
+          var textColor = paletaText[x];
+          var classe = "";
+          if (textColor == TextMesProper) {
+            classe = "mesProper";
+          }
+          result +=
+            '<div class="color AAA AA A ' +
+            classe +
+            '" style="text-align: center;position: sticky;top: 0;z-index: 1; background: white"><div class="color-box ' +
+            '"><p>' +
+            textColor +
+            "</p></div></div>";
+          for (y = 0; y < paletaBg.length; y++) {
+            var bgColor = paletaBg[y];
+            result += printColor(textColor, bgColor, bgColor == FonsMesProper);
+          }
+          result += "</div>";
+        }
+        result += "</div>";
+        $("#color-result")[0].innerHTML = result;
+        $("#contrast").change();
+      };
 
-        $("#contrast").change(function() {
-            var lvl = this.value;
-            if (lvl != "") {
-                $(".lvl").show();
-                $(".color").each(function() {
-                    if (!this.classList.contains(lvl)) {
-                        $(this).addClass("accessible-unreach")
-                    } else {
-                        $(this).removeClass("accessible-unreach")
-                    }
-                })
+      var printColor = function (textColor, bgColor, mesProper) {
+        var textColorCSS = textColor.replaceAll("#", "");
+        var bgColorCSS = bgColor.replaceAll("#", "");
+        document.documentElement.style.setProperty(
+          "--" + textColorCSS,
+          textColor
+        );
+        document.documentElement.style.setProperty("--" + bgColorCSS, bgColor);
+
+        var accesibilityClass = "";
+        var contrast = ContrastAccesibility(textColor, bgColor);
+        if (contrast < 3) {
+          accesibilityClass = "no-A";
+        } else if (contrast < 4.5) {
+          accesibilityClass = "A";
+        } else if (contrast < 7) {
+          accesibilityClass = "AA A";
+        } else {
+          accesibilityClass = "AAA AA A";
+        }
+        var colorProper = "";
+        if (mesProper) colorProper = " colMesProper ";
+
+        return (
+          '<div class="color ' +
+          accesibilityClass +
+          colorProper +
+          '"" style="text-align: center; "><div style="background: var(--' +
+          bgColorCSS +
+          "); color: var(--" +
+          textColorCSS +
+          ')" class="color-box ' +
+          '"><p>(' +
+          Math.round(contrast * 10) / 10 +
+          ":1)</p></div></div>"
+        );
+      };
+
+      var AplicarColors = function () {
+        var textColor = $("#ppal_color")[0].value;
+        var bgColor = $("#bg_color")[0].value;
+        document.documentElement.style.setProperty(
+          "--text-color-original",
+          textColor
+        );
+        document.documentElement.style.setProperty("--bg-color", bgColor);
+
+        var contrastRatio = ContrastAccesibility(textColor, bgColor);
+
+        var lvl = "";
+        if (contrastRatio < 3) {
+          lvl +=
+            "No accessible!!! (" + Math.round(contrastRatio * 10) / 10 + ":1)";
+        } else if (contrastRatio < 4.5) {
+          lvl = "A (" + Math.round(contrastRatio * 10) / 10 + ":1)";
+        } else if (contrastRatio < 7) {
+          lvl = "AA (" + Math.round(contrastRatio * 10) / 10 + ":1)";
+        } else if (contrastRatio < 21) {
+          lvl = "AAA (" + Math.round(contrastRatio * 10) / 10 + ":1)";
+        } else {
+          lvl =
+            "Even though it meets the AAA level (21:1), a super high contrast might be a bit harsh for those with contrast sensitivity. Try switching #000000 to #212121 for a softer look!";
+        }
+        $("#contrast-lvl")[0].innerText = lvl;
+
+        GenerarComparacions(textColor, bgColor);
+
+        printPruposalColor();
+
+        generarVariablesCss();
+      };
+
+      var ColorMesProper = function (paleta, color) {
+        var MesProper = "";
+        var colorHSL = hexToHSL(color);
+        var DiferenciaL = 500;
+        for (i = 0; i < paleta.length; i++) {
+          var tmpcolor = hexToHSL(paleta[i]);
+          var TmpDif = Math.abs(tmpcolor[2] - colorHSL[2]);
+          if (TmpDif < DiferenciaL) {
+            DiferenciaL = TmpDif;
+            MesProper = paleta[i];
+          }
+        }
+        return MesProper;
+      };
+
+      var GenerarComparacions = function (textColor, bgColor) {
+        var textColorHSL = hexToHSL(textColor);
+        var paletaText = generateColorScale(
+          textColorHSL[0],
+          textColorHSL[1],
+          textColorHSL[2],
+          10
+        );
+        var bgColorHSL = hexToHSL(bgColor);
+        var paletaBg = generateColorScale(
+          bgColorHSL[0],
+          bgColorHSL[1],
+          bgColorHSL[2],
+          50
+        );
+
+        TextMesProper = ColorMesProper(paletaText, textColor);
+        FonsMesProper = ColorMesProper(paletaBg, bgColor);
+
+        show(paletaText, paletaBg);
+      };
+
+      var hexFormatChecker = function (color) {
+        if (color.length > 0) {
+          let regEx = /^[0-9a-fA-F]+$/;
+          color = color.replace("#", "");
+          let isHex = regEx.test(color);
+
+          if (!isHex) {
+            color = color.slice(0, -1);
+          }
+
+          if (color.length > 6) {
+            color = color.slice(0, 6);
+          }
+
+          if (color.length > 0 && color.charAt(0) != "#") {
+            color = "#" + color;
+          }
+        }
+        return color;
+      };
+
+      function ContrastAccesibility(Color1, Color2) {
+        var fnlluminositatColor = function (color) {
+          var r = parseInt(color.slice(1, 3), 16);
+          var g = parseInt(color.slice(3, 5), 16);
+          var b = parseInt(color.slice(5, 7), 16);
+
+          r = r / 255;
+          g = g / 255;
+          b = b / 255;
+          if (r > 0.03928) {
+            r = Math.pow((r + 0.055) / 1.055, 2.4);
+          } else {
+            r = r / 12.92;
+          }
+          if (g > 0.03928) {
+            g = Math.pow((g + 0.055) / 1.055, 2.4);
+          } else {
+            g = g / 12.92;
+          }
+          if (b > 0.03928) {
+            b = Math.pow((b + 0.055) / 1.055, 2.4);
+          } else {
+            b = b / 12.92;
+          }
+
+          var result = r * 0.2126 + g * 0.7152 + b * 0.0722;
+          return result;
+        };
+        var lum1 = fnlluminositatColor(Color1);
+        var lum2 = fnlluminositatColor(Color2);
+        if (lum2 > lum1) {
+          return (lum2 + 0.05) / (lum1 + 0.05);
+        }
+        return (lum1 + 0.05) / (lum2 + 0.05);
+      }
+
+      var generateColorScale = function (H, S, L, steps) {
+        var palette = [];
+
+        var L1 = L;
+        for (i = 0; i < steps; i++) {
+          L1 = i * (100 / steps);
+          if (L1 == 0) L1 = 5;
+          else if (L1 == 100) L1 = 98;
+
+          palette.push(HSLToHex(H, S, L1));
+        }
+        return palette;
+      };
+      AplicarColors();
+
+      $("#ppal_color").change(function (e) {
+        $("#ppal_color_text")[0].value = this.value;
+        AplicarColors();
+      });
+
+      $("#swapColors").click(function () {
+        var textColor = $("#ppal_color")[0].value;
+        var bgColor = $("#bg_color")[0].value;
+
+        $("#bg_color")[0].value = textColor;
+        $("#ppal_color")[0].value = bgColor;
+        $("#bg_color_text")[0].value = textColor;
+        $("#ppal_color_text")[0].value = bgColor;
+        AplicarColors();
+      });
+
+      $("#ppal_color_text").change(function (e) {
+        let color = this.value;
+        color = hexFormatChecker(color);
+
+        if (color.length == 7) {
+          this.value = color;
+          $("#ppal_color")[0].value = color;
+          AplicarColors();
+        }
+      });
+
+      $("#bg_color").change(function (e) {
+        $("#bg_color_text")[0].value = this.value;
+        AplicarColors();
+      });
+
+      $("#bg_color_text").change(function (e) {
+        let color = this.value;
+        color = hexFormatChecker(color);
+
+        if (color.length == 7) {
+          this.value = color;
+          $("#bg_color")[0].value = color;
+          AplicarColors();
+        }
+      });
+
+      $("#contrast").change(function () {
+        var lvl = this.value;
+        if (lvl != "") {
+          $(".lvl").show();
+          $(".color").each(function () {
+            if (!this.classList.contains(lvl)) {
+              $(this).addClass("accessible-unreach");
             } else {
-                $(".lvl").hide();
-                $(".accessible-unreach").each(function() {
-                    $(this).removeClass("accessible-unreach")
-                })
+              $(this).removeClass("accessible-unreach");
             }
-            printPruposalColor()
-            generarVariablesCss()
-        });
+          });
+        } else {
+          $(".lvl").hide();
+          $(".accessible-unreach").each(function () {
+            $(this).removeClass("accessible-unreach");
+          });
+        }
+        printPruposalColor();
+        generarVariablesCss();
+      });
 
-        $("#css-generator").click(function() {
-            var str = ":root{";
-            str += $("#css-result")[0].innerText.replaceAll("\n", " ");
-            str+="}";
-            navigator.clipboard.writeText(str)
-                    .then(() => {
-                        alert("S'han copiat les variables CSS al portapapers")
-
-                    })
-                    .catch(err => {
-                        console.log('UPS!', err);
-                    });
-        })
+      $("#css-generator").click(function () {
+        var str = ":root{";
+        str += $("#css-result")[0].innerText.replaceAll("\n", " ");
+        str += "}";
+        navigator.clipboard
+          .writeText(str)
+          .then(() => {
+            alert("CSS' variables have been pasted in your clipboard.");
+          })
+          .catch((err) => {
+            console.log("OPS!", err);
+          });
+      });
+      $("#contrast").change();
+      console.clear()
     </script>
-</body>
+  </body>
+</html>
