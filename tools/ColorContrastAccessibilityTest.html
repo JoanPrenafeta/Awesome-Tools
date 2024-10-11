@@ -190,6 +190,7 @@
       $("#bg_color_text")[0].value = ForeColor;
       $("#color-pruposal").hide();
 
+
       var ajustarLluminositatColor = function (color, percent, force = false) {
         var colorHSL = hexToHSL(color);
         if (colorHSL[2] > percent && percent > 50 && !force) {

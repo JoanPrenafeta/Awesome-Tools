@@ -50,7 +50,9 @@
 
 /*Desktop*/
 @media (min-width: 1200px) {
-
+    body{
+        margin-top: 120px;
+    }
 }
 
 
