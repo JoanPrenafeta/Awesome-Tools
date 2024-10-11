@@ -629,6 +629,10 @@ body.ColorContrastAccessibilityTest .h6 {
     border-radius: var(--border-radius);
     overflow: hidden;
   }
+  .ColorContrastAccessibilityTest #swapColors{
+    display: flex;
+    gap: 1rem;
+  }
 
   /*Laptop*/
   @media (min-width: 992px) {
