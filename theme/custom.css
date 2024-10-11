@@ -419,8 +419,8 @@ body.portada main section#toolsList ul li article:has(a:hover) figure{
 
 /*contrast checker*/
 .ColorContrastAccessibilityTest section.params {
-    background-color: var(--header-bg);
-    backdrop-filter: blur(20px);
+    background: white;
+    border: 2px solid var(--primary-dark-minimum);
     z-index: 1000;
     box-shadow: var(--base-shadow);
     padding: 1rem;
@@ -631,7 +631,7 @@ body.ColorContrastAccessibilityTest .h6 {
   }
   .ColorContrastAccessibilityTest #swapColors{
     display: flex;
-    gap: 1rem;
+    gutter: 1rem;
   }
 
   /*Laptop*/
