@@ -401,27 +401,25 @@ const Colors = {
             newColor = this.hslToHex(h, s, l);                
         }
         return newColor;
+    },
+
+    generatePalette: function (starterColor, contrast = Colors.accessibilityLevel.aa){
+        var brandColor = new Color(starterColor);
+        var brandLightMin = new Color(Colors.closestAccessibleColor(starterColor, "#000000", contrast));
+        var brandDarkMin = new Color(Colors.closestAccessibleColor(starterColor, "#ffffff", contrast));
+        var brandDark =  new Color(starterColor.hex);
+        brandDark.L = brandDark.L/2;
+        var brandLight = new Color(starterColor.hex);
+        brandLight.L = brandLight.L + ((100-brandLight.L)/2);
+        var brandContrast = brandColor.contrastColor();
+    
+        return {
+            basic: brandColor,
+            lightMin: brandLightMin,
+            darkMin: brandDarkMin,
+            dark: brandDark,
+            light: brandLight,
+            contrast: brandContrast,
+        }
     }
 }
-
-var generatePalette = function (starterColor, contrast = Colors.accessibilityLevel.aa){
-    var brandColor = new Color(starterColor);
-    var brandLightMin = new Color(Colors.closestAccessibleColor(starterColor, "#000000", contrast));
-    var brandDarkMin = new Color(Colors.closestAccessibleColor(starterColor, "#ffffff", contrast));
-    var brandDark = brandColor;
-    brandDark.L = brandDark.L/2;
-    var brandLight = brandColor;
-    brandLight.L = brandLight.L + ((100-brandLight.L)/2);
-    var brandContrast = brandColor.contrastColor();
-
-    return {
-        basic: brandColor,
-        lightMin: brandLightMin,
-        darkMin: brandDarkMin,
-        dark: brandDark,
-        light: brandLight,
-        contrast: brandContrast,
-    }
-} 
-
-var PrimaryPalette = generatePalette(Colors.randomColor())
