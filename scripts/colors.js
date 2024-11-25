@@ -407,9 +407,9 @@ const Colors = {
         var brandColor = new Color(starterColor);
         var brandLightMin = new Color(Colors.closestAccessibleColor(starterColor, "#000000", contrast));
         var brandDarkMin = new Color(Colors.closestAccessibleColor(starterColor, "#ffffff", contrast));
-        var brandDark =  new Color(starterColor.hex);
+        var brandDark =  new Color(starterColor);
         brandDark.L = brandDark.L/2;
-        var brandLight = new Color(starterColor.hex);
+        var brandLight = new Color(starterColor);
         brandLight.L = brandLight.L + ((100-brandLight.L)/2);
         var brandContrast = brandColor.contrastColor();
     
