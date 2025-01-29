@@ -41,9 +41,9 @@
     </header>
 
     <main id="main">
-        <h1>Validador de contrast accessible</h1>
-        <section>
-            <h2>Paràmetres</h2>
+        <h1 class="sr-only">Validador de contrast accessible</h1>
+        <section class="params">
+            <h2 class="sr-only">Paràmetres</h2>
             <div class="field">
                 <label for="ppal_color">Color de text:</label>
                 <input type="text" name="ppal_color_text" id="ppal_color_text" placeholder="HEX Color" maxlength="8" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
@@ -54,7 +54,7 @@
                 <input type="text" name="bg_color_text" id="bg_color_text" placeholder="HEX Color" maxlength="8" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
                 <input type="color" name="bg_color" id="bg_color" />
               </div>
-              <button id="swapColors"><span>Intercanvia els colors</span><i class="fa-solid fa-rotate"></i></button>
+              <button id="swapColors" class="btn btn-primary"><span>Intercanvia els colors</span><i class="fa-solid fa-rotate"></i></button>
               <div class="field">
                 <label for="contrast">Nivell de contrast:</label>
                 <select id="contrast" name="contrast">
