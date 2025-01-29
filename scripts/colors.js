@@ -77,7 +77,7 @@ class Color {
         if (this.isDarkColor()){
             return new Color("#FFFFFF");
         } 
-        return new Color("#000000");
+        return new Color(Colors.black.hex);
     };
 
     //HEX
@@ -149,6 +149,8 @@ const Colors = {
         aaa: 7,
         highContast: 12,
     },
+
+    black: Color.newColor("#212121"),
 
 
     isValidHexColor: function (color) {
@@ -405,7 +407,7 @@ const Colors = {
 
     generatePalette: function (starterColor, contrast = Colors.accessibilityLevel.aa){
         var brandColor = new Color(starterColor);
-        var brandLightMin = new Color(Colors.closestAccessibleColor(starterColor, "#000000", contrast));
+        var brandLightMin = new Color(Colors.closestAccessibleColor(starterColor, this.black.hex, contrast));
         var brandDarkMin = new Color(Colors.closestAccessibleColor(starterColor, "#ffffff", contrast));
         var brandDark =  new Color(starterColor);
         brandDark.L = brandDark.L/2;
@@ -421,5 +423,9 @@ const Colors = {
             light: brandLight,
             contrast: brandContrast,
         }
+    },
+
+    setBaseBlack: function(hex="#212121"){
+        this.black.newColor(hex);
     }
 }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <head>
+        <title>Accessible contrast checker</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="../../theme/style.css">
+        <link rel="stylesheet" href="../theme/custom.css">
+        <script src="https://kit.fontawesome.com/78cae735db.js" crossorigin="anonymous"></script>
+        <script src="../../scripts/colors.js" defer></script>
+        <script src="../../scripts/contrast-check.js" defer></script>
+        <link rel="icon" type="image/png" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/site.webmanifest" />
+    </head>
+</head>
+<body>
+    <header>
+        <div>
+          <a href="#main" class="sr-only" id="main-redirection" target="_self">Ir al contenido principal</a>
+          <a href="https://joanprenafeta.github.io/Cool-portfolio/es/" target="_top" id="site-logo" class="h3" title="Ir a la página principal">Accessible contrast checker</a>
+        </div>
+        
+        <nav aria-label="Selector de idioma" class="language-selector">
+          <ul class="unstyled-list">
+            <li><a href="../../ca/" title="Català" target="_self" aria-selected="true">CA</a></li>
+            <li><a href="../../es/" title="Castellano" target="_self">ES</a></li>
+            <li><a href="../../en/" title="English" target="_self">EN</a></li>
+          </ul>
+        </nav>
+
+        <nav aria-label="Main menu">
+            <ul class="unstyled-list">
+                <li><a target="_blank" href="https://joanprenafeta.github.io/Awesome-Tools/" title="Ir a la herramienta Awesome-tools. Se abre en una nueva pestaña">Awesome Tools</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <h1>Validador de contrast accessible</h1>
+        <section>
+            <h2>Paràmetres</h2>
+            <div class="field">
+                <label for="ppal_color">Color de text:</label>
+                <input type="text" name="ppal_color_text" id="ppal_color_text" placeholder="HEX Color" maxlength="8" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
+                <input type="color" name="ppal_color" id="ppal_color" />
+              </div>
+              <div class="field">
+                <label for="bg_color">Color de fons:</label>
+                <input type="text" name="bg_color_text" id="bg_color_text" placeholder="HEX Color" maxlength="8" pattern="#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?" />
+                <input type="color" name="bg_color" id="bg_color" />
+              </div>
+              <button id="swapColors"><span>Intercanvia els colors</span><i class="fa-solid fa-rotate"></i></button>
+              <div class="field">
+                <label for="contrast">Nivell de contrast:</label>
+                <select id="contrast" name="contrast">
+                  <option value="a"><strong>A</strong> (3:1)</option>
+                  <option value="aa" selected><strong>AA</strong> (4,5:1)</option>
+                  <option value="aaa"><strong>AAA</strong> (7:1)</option>
+                  <option value="highContast"><strong>Alt contrast</strong> (12:1)</option>
+                </select>
+              </div>
+        </section>
+
+        <section class="example-color"></section>
+            <h2 class="sr-only">Previsualitzador de colors</h2>
+          <p class="h1">Fes brillar els teus colors!</p>
+          <p>Vols assegurar-te que els teus colors <strong>destaquen per a tots els usuaris?</strong> Trobem la combinació perfecta!</p>
+          <p id="contrast-lvl"></p>
+          <p id="color-pruposal"> a </p>
+        </section>
+    </main>
+</body>
+</html>

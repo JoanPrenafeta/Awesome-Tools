@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+:root{
+    /*Tipography*/
+    --font-family-base: "Source Sans 3", sans-serif;
+    --font-family-headings: "Source Serif 4", serif;
+    --font-size-base: 16px;
+    --font-size-h1: 2.986rem;
+    --font-size-h2: 2.488rem;
+    --font-size-h3: 2.074rem;
+    --font-size-h4: 1.728rem;
+    --font-size-h5: 1.44rem;
+    --font-size-h6: 1.2rem;
+    --font-size-description: 1.1rem;
+    --font-size-small: 0.833rem;
+    --line-height-small: 1.5;
+
+    /*Theme*/
+    --primary-brand: #64ffda;
+    --primary-contrast: #020303;
+    --primary-bg: #00a881;
+    --primary-dark: #00664e;
+    --primary-dark-min: #008566;
+    --primary-light: #99ffe7;
+    --primary-light-min: #66ffdb;
+    --primary-AA: var(--primary-dark-min);
+
+    --secondary-brand: #f29175;
+    --secondary-contrast: #030202;
+    --secondary-bg: #ee6d49;
+    --secondary-dark: #5d1b09;
+    --secondary-dark-min: #d63e14;
+    --secondary-light: #f6b4a2;
+    --secondary-light-min: #f28f73;
+    --secondary-AA: var(--secondary-dark-min);
+
+    --text-color: #212121;
+
+    --page-bg: #ffffff;
+    
+    /*Constants*/
+    font-size: var(--font-size-base);
+    --primary-accessible: var(--primary-dark-min);
+    --secondary-accessible: var(--secondary-dark-min);
+    --accent-color: var(--secondary-accessible);
+    accent-color: var(--accent-color);
+    --minimus-clicable-area: 44px;
+    --link-color: var(--primary-accessible);
+    --link-color-hover: var(--primary-dark);
+    --spacing-ingline: 30px;
+    --base-transition: all 0.2s;
+
+    --base-gap: 30px;
+    --big-gap: 80px;
+    --base-shadow: 0 0 10px color-mix(in srgb, var(--text-color) 16%, transparent);
+
+    --radius-xl: 20px;
+    --radius-sm: 4px;
+
+    --tablet-break: 768px;
+    --laptop-break: 992px;
+    --desktop-break: 1200px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page-bg: #212121;
+        --text-color: #ffffff;
+        --primary-AA: var(--primary-light-min);
+        --secondary-AA: var(--secondary-light-min);
+    }
+}
+
+
+/*Generic rules*/
+body{
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    margin: 0;
+    color: var(--text-color);
+    background: var(--page-bg);
+    -webkit-font-smoothing: antialiased;   
+}
