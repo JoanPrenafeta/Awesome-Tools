@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de variables - Joan Prenafeta</title>
+    <!-- Herramienta propia de cálculo de colores accesible -->
+    <script src="https://joanprenafeta.github.io/Awesome-Tools/scripts/colors.js" defer=></script>
+    <!-- Importar Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Parámetros básicos -->
+    <link rel="stylesheet" href="Variables.css">
+    <link rel="stylesheet" href="theme.css">
+    <script src="main.js" defer=></script>
+    <script src="https://kit.fontawesome.com/78cae735db.js" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/png" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="https://joanprenafeta.github.io/Cool-portfolio/img/favicon/site.webmanifest" />
+</head>
+<body class="font-combo-1">
+    <header>
+        <div class="container">
+            <h1 class="h2">Sistema de Variables</h1>
+            <nav><ul>
+                <li><a href="#">Lorem</a></li>
+                <li><a href="#">Ipsum</a></li>
+                <li><a href="#">Aemet</a></li>
+                <li><a href="#">Integer</a></li>
+                <li><a href="#">Dolor</a></li>
+            </ul></nav>
+        </div>
+    </header>
+    <main role="main" id="main">
+        <section id="slide" class="container">
+            <ul class="unstyled-list">
+                <li>
+                    <article>
+                        <img src="https://images.pexels.com/photos/12662910/pexels-photo-12662910.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Manos Escribiendo En Una Computadora Portátil En Una Mesa De Madera Al Aire Libre">
+                        <div class="info-slide">
+                            <h2>Foto de Anna Shvets</h2>
+                            <p class="description"> <a href="https://www.pexels.com/es-es/foto/ordenador-portatil-internet-ordenador-autonomo-12662910/" target="_blank">https://www.pexels.com/es-es/foto/ordenador-portatil-internet-ordenador-autonomo-12662910/</a> </p>
+                        </div>
+                    </article>
+                </li>
+            </ul>
+            <div class="dots">
+                <button type="button" aria-label="Slide 1"></button>
+                <button  aria-selected="true" type="button" aria-label="Slide 2"></button>
+                <button type="button" aria-label="Slide 3"></button>
+            </div>
+        </section>
+
+        <section id="boxes" class="container">
+            <article>
+                <h3>Morbi ultricies felis sit amet</h3>
+                <p>Mauris interdum gravida tellus. Duis rhoncus lacus at faucibus dignissim. Phasellus dapibus, orci eget iaculis pharetra, dolor ex convallis est, nec convallis leo erat a odio. </p>
+            </article>
+            
+            <article>
+                <h3>Morbi ultricies felis sit amet</h3>
+                <p>Mauris interdum gravida tellus. Duis rhoncus lacus at faucibus dignissim. Phasellus dapibus, orci eget iaculis pharetra, dolor ex convallis est, nec convallis leo erat a odio. </p>
+            </article>
+
+            <article>
+                <h3>Morbi ultricies felis sit amet</h3>
+                <p>Mauris interdum gravida tellus. Duis rhoncus lacus at faucibus dignissim. Phasellus dapibus, orci eget iaculis pharetra, dolor ex convallis est, nec convallis leo erat a odio. </p>
+            </article>
+        </section>
+
+        <section id="configurador" class="container">
+            <h2>Configurador de variables</h2>
+            <div class="field">
+                <label for="ppal_color">Color principal: </label>
+                <input type="color" id="ppal_color" name="ppal_color">
+            </div>
+            <div class="field">
+                <label for="font-combo">Tipografía: </label>
+                <select id="font-combo" name="font-combo">
+                    <option selected value="1">Poppins-Inter</option>
+                    <option value="2">Atkinson Hyperlegible-Atkinson Hyperlegible</option>
+                    <option value="3">Montserrat-Source Sans 3</option>
+                    <option value="4">Work Sans-Noto Sans</option>
+                    <option value="5">Source Serif 4-Source Sans 3</option>
+                    <option value="6">Fira Sans-Fira Sans</option>
+                    <option value="7">Mulish-Asap</option>
+                </select>
+                <ul>
+                    <li><strong style='font-family: "Poppins", sans-serif;'>Poppins-Inter: </strong> <span style='font-family: "Inter", sans-serif;'> Moderna y limpia. Tono fresco y profesional.</span></li>
+                    <li><strong style='font-family: "Atkinson Hyperlegible", sans-serif;'>Atkinson Hyperlegible-Atkinson Hyperlegible: </strong> <span style='font-family: "Atkinson Hyperlegible", sans-serif;'> Máxima legibilidad. Tono accesible y neutral.</span></li>
+                    <li><strong style='font-family: "Source Sans 3", sans-serif;'>Montserrat-Source Sans 3: </strong> <span style='font-family: "Montserrat", sans-serif;'>Titulares con carácter y texto fluido. Tono editorial y confiable.</span></li>
+                    <li><strong style='font-family: "Work Sans", sans-serif;'>Work Sans-Noto Sans: </strong> <span style='font-family: "Noto Sans", sans-serif;'>Versátil y clara. Tono funcional y neutro.</span></li>
+                    <li><strong style='font-family: "Source Serif 4", serif;'>Source Serif 4-Source Sans 3: </strong> <span style='font-family: "Source Sans 3", sans-serif;'>Equilibrio entre clásica y moderna. Tono serio y elegante.</span></li>
+                    <li><strong style='font-family: "Fira Sans", sans-serif;'>Fira Sans-Fira Sans: </strong> <span style='font-family: "Fira Sans", sans-serif;'>Uniforme y legible. Tono técnico y claro.</span></li>
+                    <li><strong style='font-family: "Mulish", sans-serif;'>Mulish-Asap: </strong> <span style='font-family: "Asap", sans-serif;'>Elegante y funcional. Tono amable y contemporáneo.</span></li>
+                </ul>
+            </div>
+
+            <div class="field">
+                <label for="contenedor">Contenedor: </label>
+                <select id="contenedor" name="contenedor">
+                    <option selected value="full">Máxima amplitud</option>
+                    <option value="plone-6-clasic">Plone 6 (Clasic)</option>
+                    <option value="plone-6-volto">Plone 6 (Volto)</option>
+                    <option value="estrecho">Estrecho</option>
+                    <option value="ancho">Ancho</option>
+                </select>
+                <ul>
+                    <li><strong>Máxima amplitud: </strong> <span>Ocupa todo el ancho disponible.</span></li>
+                    <li><strong>Plone 6 (Clasic): </strong> <span>Diseño basado en el Plone 6 clásico.</span></li>
+                    <li><strong>Plone 6 (Volto): </strong> <span>Diseño basado en el frontend Volto de Plone 6..</span></li>
+                    <li><strong>Estrecho: </strong> <span>Ideal para contenidos minimalistas o centrados en una sola acción o mensaje.</span></li>
+                    <li><strong>Ancho: </strong> <span>Diseño ligeramente más amplio que el clásico. Equilibrado y cómodo..</span></li>
+                </ul>
+            </div>
+
+            <div class="field">
+                <label for="stroke">Contorno: </label>
+                <select id="stroke" name="stroke">
+                    <option selected value="none">Sin contornos</option>
+                    <option value="regular">Contorno sutil</option>
+                    <option value="strong">Contorno definido</option>
+                    <option value="heavy">Contorno grueso</option>
+                </select>
+                <ul>
+                    <li><strong>Sin contornos: </strong> <span style='padding: 1rem; border: 0px solid var(--body-color);'>Tono limpio, minimalista y ligero.</span></li>
+                    <li><strong>Contorno sutil: </strong> <span style='padding: 1rem; border: 1px solid var(--body-color);'>Tono equilibrado, claro y funcional.</span></li>
+                    <li><strong>Contorno definido: </strong> <span style='padding: 1rem; border: 2px solid var(--body-color);'>Tono seguro, moderno y estructurado.</span></li>
+                    <li> <strong>Contorno grueso: </strong> <span style='padding: 1rem; border: 4px solid var(--body-color);'>Tono contundente, expresivo y enfático.</span></li>
+                </ul>
+            </div>
+
+            <div class="field">
+                <label for="radius">Esquinas: </label>
+                <select id="radius" name="radius">
+                    <option selected value="square">Recto y preciso</option>
+                    <option value="smooth">Ligeramente redondeado</option>
+                    <option value="round">Redondeado y amable</option>
+                    <option value="circle">Completamente circular</option>
+                </select>
+                <ul>
+                    <li> <strong>Recto y preciso: </strong> <span style='padding: 1rem; background-color: var(--brand-primary); color: var(--brand-primary-contrast); border-radius: 0px;'>Tono sólido, técnico y estructurado.</span></li>
+                    <li> <strong>Ligeramente redondeado: </strong> <span style='padding: 1rem; background-color: var(--brand-primary); color: var(--brand-primary-contrast); border-radius: 4px;'>Tono moderno, funcional y neutro.</span></li>
+                    <li> <strong>Redondeado y amable: </strong> <span style='padding: 1rem; background-color: var(--brand-primary); color: var(--brand-primary-contrast); border-radius: 16px;'>Tono accesible, contemporáneo y fluido.</span></li>
+                    <li> <strong>Completamente circular: </strong> <span style='padding: 1rem; background-color: var(--brand-primary); color: var(--brand-primary-contrast); border-radius: 80px;'>Tono expresivo, lúdico y visualmente distintivo.</span></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    
+</body>
+</html>

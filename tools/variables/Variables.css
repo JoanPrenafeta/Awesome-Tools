@@ -1,0 +1,276 @@
+/*Importaciones de tipografías*/
+    /*Combo 1: Poppins-Inter*/
+    /*Moderna y limpia. Tono fresco y profesional.*/
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    /*Combo 2: Atkinson Hyperlegible-Atkinson Hyperlegible*/
+    /*Máxima legibilidad. Tono accesible y neutral.*/
+        @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+    /*Combo 3: Montserrat-Source Sans 3*/
+    /*Titulares con carácter y texto fluido. Tono editorial y confiable.*/
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+    /*Combo 4: Work Sans-Noto Sans*/
+    /*Versátil y clara. Tono funcional y neutro.*/
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    /*Combo 5: Source Serif 4-Source Sans 3*/
+    /*Equilibrio entre clásica y moderna. Tono serio y elegante.*/
+        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+    /*Combo 6: Fira Sans-Fira Sans*/
+    /*Uniforme y legible. Tono técnico y claro.*/
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+    /*Combo 7: Mulish-Asap*/
+    /*Elegante y funcional. Tono amable y contemporáneo.*/
+        @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/*Ejemplos de variables que considero necesarias.*/
+    :root{
+        --container-width: 1500px; /*Aplica al tamaño del contenedor del main, este servirá para definir que tan cerca quedara el contenido a los márgenes de pantalla. Lo más recomendable sería dejar la que viene de fábrica con volto o plone 6 classic.*/
+
+        /*Paleta de colores*/
+            --body-color: #212121; /*Color del texto. Este no debería ser un negro puro, recomiendo un contraste aproximado de 16:1*/
+            --body-background: #ffffff; /*Color de fondo de la página.*/
+
+            --brand-primary: #FF0000; /*Color por defecto de los elementos principales.*/
+            --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+            --brand-primary-dark: color-mix(in srgb, var(--brand-primary) 80%, #000000); /*Variación más oscura del color principal. Debería poderse ver correctamente sobre blanco.*/
+            --brand-primary-light: color-mix(in srgb, var(--brand-primary) 80%, #ffffff); /*Variación más clara del color principal. Debería poderse ver correctamente sobre negro.*/
+
+            accent-color: var(--brand-primary); /*Se aplica a elementos nativos como por ejemplo el color de un checkbox seleccionado.*/
+            --link-color: #eb0000; /*Mi recomendación es que sea una variación del color principal que cumpla como mínimo con un contraste de 4.5:1 para que cumpla con el nivel de accesibilidad AA*/
+
+        /*Contornos*/
+            --border-weigth: 1px; /*Grosor del contorno de los elementos (botones, campos de entrada, etc)*/
+            --base-radius: 4px; /*Que tan redondeadas estarán las esquinas de los elementos.*/
+            --inner-spacing: 1rem; /*El espacio que dejará por defecto el contenido de los elementos respecto a su contenedor (tarjetas, secciones, etc.)*/
+            --outer-radius: calc(var(--base-radius) + var(--inner-spacing)); /*Hay algunos elementos que tienen elementos redondeados en su interior, es importante mantener el centro de la redondez respecto a su interior.*/
+
+        /*Tipografías*/
+            --font-family-base: "Atkinson Hyperlegible", sans-serif; /*Esta tipografía hace referencia a prácticamente toda la tipografía del portal web por defecto.*/
+            --font-family-heading: "Atkinson Hyperlegible", sans-serif; /*Esta tipografía hace referencia a los títulos del portal web por defecto.*/
+    }
+
+/*Ejemplos de variables que considero complementarias.*/
+    :root{
+        /*Para el color secundario, en el caso de no tener, usar el valor de su variable respectiva del color principal*/
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
+        --brand-secondary-dark: color-mix(in srgb, var(--brand-secondary) 80%, #000000); /*Variación más oscura del color secundario. Debería poderse ver correctamente sobre blanco.*/
+        --brand-secondary-light: color-mix(in srgb, var(--brand-secondary) 80%, #ffffff); /*Variación más clara del color secundarios. Debería poderse ver correctamente sobre negro.*/
+
+        --background-01: #ececec; /*Color de fondo de algunas secciones*/
+        --background-01-contrast: #212121; /*Color de contraste para las secciones con background-01*/
+        --background-02: #de0000; /*Color de fondo de algunas secciones*/
+        --background-02-contrast: #ffffff; /*Color de contraste para las secciones con background-02*/
+        --background-03: #212121; /*Color de fondo de algunas secciones*/
+        --background-03-contrast: #ffffff; /*Color de contraste para las secciones con background-03*/
+        --background-04: #0000ff; /*Color de fondo de algunas secciones*/
+        --background-04-contrast: #ffffff; /*Color de contraste para las secciones con background-04*/
+        --font-size: 18px; /*Tamaño de fuente base.*/
+        --h1-size: calc(2.66 * var(--font-size)); /*Tamaño de fuente h1.*/
+        --h2-size: calc(1.66 * var(--font-size)); /*Tamaño de fuente h2.*/
+        --h3-size: calc(1.33 * var(--font-size)); /*Tamaño de fuente h3.*/
+        --h4-size: calc(1 * var(--font-size)); /*Tamaño de fuente h4.*/
+        --h5-size: calc(1 * var(--font-size)); /*Tamaño de fuente h5.*/
+        --h6-size: calc(1 * var(--font-size)); /*Tamaño de fuente h6.*/
+    }
+
+/*Contenedor*/
+    body.contenedor-full,                   /*Máxima amplitud. Ocupa todo el ancho disponible.*/
+    body.contenedor-plone-6-clasic,         /*Diseño basado en el Plone 6 clásico.*/
+    body.contenedor-plone-6-volto,          /*Diseño basado en el frontend Volto de Plone 6.*/
+    body.contenedor-estrecho,               /*Ideal para contenidos minimalistas o centrados en una sola acción o mensaje.*/ 
+    body.contenedor-ancho                   /*Diseño ligeramente más amplio que el clásico. Equilibrado y cómodo.*/
+    {--container-width: 100%;}
+
+    @media (min-width: 768px) {
+        body.contenedor-plone-6-clasic { --container-width: 723px; }
+        body.contenedor-plone-6-volto { --container-width: 768px; }
+        body.contenedor-ancho{--container-width: 723px;}
+        body.contenedor-estrecho { --container-width: 600px; }
+    }
+    @media (min-width: 992px) {
+        body.contenedor-plone-6-clasic { --container-width: 933px; }
+        body.contenedor-plone-6-volto { --container-width: 960px; }
+        body.contenedor-ancho{--container-width: 980px;}
+        body.contenedor-estrecho { --container-width: 700px; }
+    }
+    @media (min-width: 1200px) {
+        body.contenedor-plone-6-clasic { --container-width: 1127px; }
+        body.contenedor-plone-6-volto { --container-width: 1140px; }
+        body.contenedor-ancho{--container-width: 1180px;}
+        body.contenedor-estrecho { --container-width: 800px; }
+    }
+    @media (min-width: 1440px) {
+        body.contenedor-plone-6-clasic { --container-width: 1376px; }
+        body.contenedor-plone-6-volto { --container-width: 1320px; }
+        body.contenedor-ancho {--container-width: 1390px;}
+        body.contenedor-estrecho { --container-width: 900px; }
+    }
+    @media (min-width: 1920px) {
+        body.contenedor-plone-6-clasic { --container-width: 1728px; }
+        body.contenedor-plone-6-volto { --container-width: 1600px; }
+        body.contenedor-ancho {--container-width: 1800px;}
+        body.contenedor-estrecho { --container-width: 1000px; }
+    }
+
+/*Fonts*/
+    body.font-combo-1{ /*Moderna y limpia. Tono fresco y profesional.*/
+        --font-family-heading: "Poppins", sans-serif;
+        --font-family-base: "Inter", sans-serif;
+    }
+    body.font-combo-2{ /*Máxima legibilidad. Tono accesible y neutral.*/
+        --font-family-heading: "Atkinson Hyperlegible", sans-serif;
+        --font-family-base: "Atkinson Hyperlegible", sans-serif;
+    }
+    body.font-combo-3{ /*Titulares con carácter y texto fluido. Tono editorial y confiable.*/
+        --font-family-heading: "Montserrat", sans-serif;
+        --font-family-base: "Source Sans 3", sans-serif;
+    }
+    body.font-combo-4{ /*Versátil y clara. Tono funcional y neutro.*/
+        --font-family-heading: "Work Sans", sans-serif;
+        --font-family-base: "Noto Sans", sans-serif;
+    }
+    body.font-combo-5{ /*Equilibrio entre clásica y moderna. Tono serio y elegante.*/
+        --font-family-heading:"Source Serif 4", serif;
+        --font-family-base: "Source Sans 3", sans-serif;
+    }
+    body.font-combo-6{ /*Uniforme y legible. Tono técnico y claro.*/
+        --font-family-base: "Fira Sans", sans-serif;
+        --font-family-heading: "Fira Sans", sans-serif;
+    }
+    body.font-combo-7{ /*Elegante y funcional. Tono amable y contemporáneo.*/
+        --font-family-base: "Mulish", sans-serif;
+        --font-family-heading: "Asap", sans-serif;
+    }
+
+/*corners*/ 
+    body.radius-square{ /*Recto y preciso. Tono sólido, técnico y estructurado.*/
+        --base-radius: 0px;
+        --outer-radius: 0px;
+    }
+
+    body.radius-smooth{ /*Ligeramente redondeado. Tono moderno, funcional y neutro.*/
+        --base-radius: 4px;
+        --outer-radius: calc(var(--base-radius) + var(--inner-spacing));
+    }
+
+    body.radius-round{ /*Redondeado y amable. Tono accesible, contemporáneo y fluido.*/
+        --base-radius: 16px;
+        --outer-radius: calc(var(--base-radius) + var(--inner-spacing));
+    }
+
+    body.radius-circle{ /*Completamente circular. Tono expresivo, lúdico y visualmente distintivo.*/
+        --base-radius: 80px;
+        --inner-spacing: 2rem;
+        --outer-radius: calc(var(--base-radius) + var(--inner-spacing));
+    }
+
+/*Strokes*/
+    body.stroke-none{ /*Sin contorno. Tono limpio, minimalista y ligero.*/
+        --border-weigth: 0px;
+    }
+
+    body.stroke-regular{ /*Contorno sutil. Tono equilibrado, claro y funcional.*/
+        --border-weigth: 1px;
+    }
+
+    body.stroke-strong{ /*Contorno definido. Tono seguro, moderno y estructurado.*/
+        --border-weigth: 2px;
+    }
+
+    body.stroke-heavy{ /*Contorno grueso. Tono contundente, expresivo y enfático.*/
+        --border-weigth: 4px;
+    }
+
+/*Theme*/
+    body.default-colors{ /*Equilibrado y neutro. Tono claro, profesional y versátil.*/
+        --body-color: #212121;
+        --body-background: #ffffff;
+    }
+
+    body.primary-background{ /*Enfático y corporativo. Tono dinámico y centrado en la marca.*/
+        --body-color: var(--brand-primary-contrast);
+        --body-background: var(--brand-primary);
+    }
+
+    body.primary-background-reverse{ /*Invertido y distintivo. Tono fresco, moderno y visualmente llamativo.*/
+        --body-color: var(--brand-primary);
+        --body-background: var(--brand-primary-contrast);
+    }
+
+    body.dark-colors{ /*Elegante y contrastado. Tono sofisticado, técnico y nocturno.*/
+        --body-color: #ffffff;
+        --body-background: #212121;
+    }
+
+/*Estos ejemplos que vienen a continuación son ejemplos con los colores corporativos, no haría falta crear. Simplemente en el :root{} principal, asignar el valor correspondiente a la entidad correspondiente. */
+    body.theme-ecityclic{
+        --brand-primary: #3C3C3B; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+
+        --brand-secondary: #80BA27; /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: #ffffff; /*Color de contraste de los elementos secundarios.*/
+    }
+
+    body.theme-espublico{
+        --brand-primary: #F18A00; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+
+        --brand-secondary: #002D5D; /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: #ffffff; /*Color de contraste de los elementos secundarios.*/
+    }
+
+    body.theme-espublico-corporativa-01{
+        --brand-primary: #F18A00; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-corporativa-02{
+        --brand-primary: #0093CF; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-haciendalocal{
+        --brand-primary: #00B288; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-recursoshumanos{
+        --brand-primary: #E9004C; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-contratacion{
+        --brand-primary: #009BA2; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-gestiona{
+        --brand-primary: #007085; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-tecnologia{
+        --brand-primary: #008DBD; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-sistemas{
+        --brand-primary: #004977; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-esfirma{
+        --brand-primary: #AE9E3B; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+    }
+
+    body.theme-espublico-drag{
+        --brand-primary: #183A64; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+    }

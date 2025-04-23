@@ -1,0 +1,311 @@
+body{
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+}
+
+h1,h2,h3,h4,h5,h6,.font-heading{
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+}
+
+a,.link, .link-color{
+    color: var(--link-color);
+    text-decoration: none;
+}
+strong{
+    font-weight: 700;
+}
+
+a:hover,
+.link:hover, 
+.link-color:hover,
+a:focus,
+.link:focus, 
+.link-color:focus{
+    color: color-mix(in srgb, var(--link-color) 50%, black);
+    text-decoration: underline;
+}
+
+h1{font-size: var(--h1-size);}
+h2{font-size: var(--h2-size);}
+h3{font-size: var(--h3-size);}
+h4{font-size: var(--h4-size);}
+h5{font-size: var(--h5-size);}
+h6{font-size: var(--h6-size);}
+
+ul li::marker{
+    color: var(--link-color);
+}
+
+
+/*theme*/
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+body > header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    border-bottom: var(--border-weigth) solid var(--brand-primary-light);
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding-inline: var(--inner-spacing);
+}
+
+body > header .container{
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body > header nav ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+body > header nav ul a{
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+    text-decoration: none;
+    position: relative;
+}
+
+body > header nav ul a:before{
+    content: "";
+    height: 4px;
+    position: absolute;
+    background-color: var(--brand-primary);
+    bottom: 0;
+    left: 0;
+    width: 0;
+    transition: width 0.2s;
+}
+
+body > header nav ul a:hover,
+body > header nav ul a:active,
+body > header nav ul a:focus{
+    text-decoration: none;
+}
+
+body > header nav ul a:hover:before,
+body > header nav ul a:active:before,
+body > header nav ul a:focus:before{
+    width: 100%;
+}
+
+.container{
+    max-width: var(--container-width);
+}
+
+body main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: var(--inner-spacing);
+    gap: 60px;
+}
+body main > section{
+    flex-grow: 1;
+    width: 100%;
+}
+
+body main #configurador{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--inner-spacing);
+}
+body main #configurador h2{
+    width: 100%;
+}
+body main #configurador .field{
+    flex: 1 1 0;
+    margin-bottom: 2rem;
+    border: var(--border-weigth) solid var(--brand-primary);
+    border-radius: var(--base-radius);
+    padding: var(--inner-spacing);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+body main #configurador .field label{
+    font-weight: bold;
+}
+
+body main #configurador .field ul li > span{
+    display: flex;
+    margin-bottom: 4px;
+}
+
+body main #slide{
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    flex-grow: 1;
+}
+
+body main #slide img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: --bas;
+}
+
+.sr-only{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.unstyled-list{
+    list-style-type: none;
+}
+
+
+/*inputs*/
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+textarea,
+select {
+    font-size: 1rem;
+    padding: calc(var(--inner-spacing) /2);
+    background-color: color-mix(in srgb, var(--body-background) 90%, var(--brand-primary));
+    border: var(--border-weigth) solid color-mix(in srgb, var(--body-color) 50%, var(--brand-primary));
+    border-radius: var(--base-radius);
+}
+
+/*Slide*/
+main#main #slide ul{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: stretch;
+    align-items: stretch;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+main#main #slide ul li{
+    width: 100%;
+}
+
+main#main #slide ul li article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: var(--outer-radius);
+    overflow: hidden;
+    position: relative;
+}
+
+main#main #slide ul li article .info-slide{
+    padding: var(--inner-spacing);
+    border-radius: var(--base-radius);
+    position: absolute;
+    top: var(--inner-spacing);
+    left: var(--inner-spacing);
+    background-color: color-mix(in srgb, var(--body-color), transparent 20%);
+    max-width: calc(100% - (var(--inner-spacing)*2));
+}
+
+main#main #slide ul li article .info-slide *{
+    color: var(--body-background);
+}
+
+main#main #slide article img{
+    width: 100%;
+    aspect-ratio: 21/9;
+    object-fit: cover;
+    object-position: center;
+}
+
+main#main #slide .dots{
+    padding-inline: var(--inner-spacing);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--inner-spacing);
+    min-height: 60px;
+}
+
+main#main #slide .dots button{
+    cursor: pointer;
+    background-color: color-mix(in srgb, var(--body-color), var(--body-background) 80%);
+    border: none;
+    width: 60px;
+    height: 8px;
+    border-radius: var(--base-radius);
+    transition: all 0.2s;
+    position: relative;
+}
+main#main #slide .dots button:hover,
+main#main #slide .dots button:focus
+{
+    background-color: color-mix(in srgb, var(--brand-primary), var(--body-background) 50%);
+    height: 24px;
+}
+main#main #slide .dots button[aria-selected="true"]{
+    height: 16px;
+    background-color: var(--link-color);
+}
+
+main#main #slide .dots button::before{
+    content: "";
+    position: absolute;
+    min-height: 44px;
+    min-width: 44px;
+    inset: 0;
+}
+
+
+main#main #boxes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--inner-spacing);
+    justify-content: center;
+    align-self: center;
+} 
+
+main#main #boxes article{
+    flex: 1 1 0;
+    padding: var(--inner-spacing);
+    background-color: color-mix(in srgb, var(--body-color) 10%, var(--body-background));
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    border-radius: var(--base-radius);
+}
+
+main#main #boxes article > *{
+    flex-grow: 1;
+}
