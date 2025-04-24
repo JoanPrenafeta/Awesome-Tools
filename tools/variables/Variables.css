@@ -210,34 +210,34 @@
 
 /*Estos ejemplos que vienen a continuación son ejemplos con los colores corporativos, no haría falta crear. Simplemente en el :root{} principal, asignar el valor correspondiente a la entidad correspondiente. */
     body.theme-ecityclic{
-        --brand-primary: #3C3C3B; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #3C3C3B!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #ffffff!important; /*Color de contraste de los elementos principales.*/
 
-        --brand-secondary: #80BA27; /*Color por defecto de los elementos secundarios.*/
-        --brand-secondary-contrast: #ffffff; /*Color de contraste de los elementos secundarios.*/
+        --brand-secondary: #80BA27!important; /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: #ffffff!important; /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico{
-        --brand-primary: #F18A00; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #F18A00!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
 
-        --brand-secondary: #002D5D; /*Color por defecto de los elementos secundarios.*/
-        --brand-secondary-contrast: #ffffff; /*Color de contraste de los elementos secundarios.*/
+        --brand-secondary: #002D5D!important; /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: #ffffff!important; /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-corporativa-01{
-        --brand-primary: #F18A00; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #F18A00!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-corporativa-02{
-        --brand-primary: #0093CF; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #0093CF!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-haciendalocal{
-        --brand-primary: #00B288; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #00B288!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-recursoshumanos{
@@ -246,31 +246,31 @@
     }
 
     body.theme-espublico-contratacion{
-        --brand-primary: #009BA2; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #009BA2!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-gestiona{
-        --brand-primary: #007085; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #007085!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-tecnologia{
-        --brand-primary: #008DBD; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #008DBD!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-sistemas{
-        --brand-primary: #004977; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #004977!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #ffffff!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-esfirma{
-        --brand-primary: #AE9E3B; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #000000; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #AE9E3B!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
     }
 
     body.theme-espublico-drag{
-        --brand-primary: #183A64; /*Color por defecto de los elementos principales.*/
-        --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
+        --brand-primary: #183A64!important; /*Color por defecto de los elementos principales.*/
+        --brand-primary-contrast: #ffffff!important; /*Color de contraste de los elementos principales.*/
     }
