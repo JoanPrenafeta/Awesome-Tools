@@ -231,6 +231,8 @@
         --brand-primary: #F18A00!important; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
         --link-color: #ad6200!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-corporativa-02{
@@ -249,40 +251,54 @@
         --brand-primary: #E9004C; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #ffffff; /*Color de contraste de los elementos principales.*/
         --link-color: #eb004e!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-contratacion{
         --brand-primary: #009BA2!important; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
         --link-color: #00838a!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-gestiona{
         --brand-primary: #007085!important; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
         --link-color: #007185!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-tecnologia{
         --brand-primary: #008DBD!important; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
         --link-color: #007ea8!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-sistemas{
         --brand-primary: #004977!important; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #ffffff!important; /*Color de contraste de los elementos principales.*/
         --link-color: #004977!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-esfirma{
         --brand-primary: #AE9E3B!important; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #000000!important; /*Color de contraste de los elementos principales.*/
         --link-color: #82762c!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
 
     body.theme-espublico-drag{
         --brand-primary: #183A64!important; /*Color por defecto de los elementos principales.*/
         --brand-primary-contrast: #ffffff!important; /*Color de contraste de los elementos principales.*/
         --link-color: #183A64!important;
+        --brand-secondary: var(--brand-primary); /*Color por defecto de los elementos secundarios.*/
+        --brand-secondary-contrast: var(--brand-primary-contrast); /*Color de contraste de los elementos secundarios.*/
     }
