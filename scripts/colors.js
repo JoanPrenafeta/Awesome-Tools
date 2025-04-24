@@ -70,7 +70,8 @@ class Color {
     };
 
     isDarkColor(){
-        return (this.R + this.G + this.B <= 382.5)
+        const luminance = 0.299 * this.#R + 0.587 * this.#G + 0.114 * this.#B;
+        return luminance < 128;
     };
 
      contrastColor(){
