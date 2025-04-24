@@ -52,7 +52,7 @@ body > header{
     justify-content: center;
     align-items: center;
     flex-grow: 1;
-    border-bottom: var(--border-weigth) solid var(--brand-primary-light);
+    border-bottom: var(--border-weigth) solid color-mix(in srgb, var(--brand-secondary) 50%, var(--body-background));
     flex-wrap: wrap;
     margin-bottom: 2rem;
     padding-inline: var(--inner-spacing);
