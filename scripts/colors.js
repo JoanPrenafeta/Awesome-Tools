@@ -406,7 +406,7 @@ const Colors = {
 
     generatePalette: function (starterColor, contrast = Colors.accessibilityLevel.aa){
         var brandColor = new Color(starterColor);
-        var brandLightMin = new Color(Colors.closestAccessibleColor(starterColor, "#000000", contrast));
+        var brandLightMin = new Color(Colors.closestAccessibleColor(starterColor, "#212121", contrast));
         var brandDarkMin = new Color(Colors.closestAccessibleColor(starterColor, "#ffffff", contrast));
         var brandDark =  new Color(starterColor);
         brandDark.L = brandDark.L/2;
