@@ -32,7 +32,7 @@ table.responsive-table tr:not(:has(th)){
 }
 
 table.responsive-table tr{
-    border-left: 4px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+    
 }
 
 table.responsive-table tr:not(:has(th)) td{
