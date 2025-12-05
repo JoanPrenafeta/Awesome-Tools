@@ -1,0 +1,125 @@
+:root{
+    --table-th-bg: var(--text-color);
+    --table-th-color: var(--page-bg);
+    --table-border-width: 0px;
+    --table-border-color: var(--text-color);
+    --font-family-base: "Atkinson Hyperlegible Next", sans-serif;
+    --font-family-headings: "Atkinson Hyperlegible Next", sans-serif;
+    --text-color: #0b0e0d;
+    --page-bg: #ffffff;
+}
+table.responsive-table{
+    border: none;
+    border-spacing: 0;
+    margin-bottom: var(--gap-base);
+    width: -webkit-fill-available;
+}
+
+table.responsive-table th{
+    font-family: var(--font-family-headings);
+}
+
+table.responsive-table tr:has(th){
+    display: none;
+}
+
+table.responsive-table tr:not(:has(th)){
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--gap-base);
+}
+
+table.responsive-table tr{
+    border-left: 4px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+}
+
+table.responsive-table tr:not(:has(th)) td{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    text-align: right;
+    padding: 0;
+    padding-right: 16px;
+    border: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+}
+
+table.responsive-table tr:not(:has(th)) td span,
+table.responsive-table tr:not(:has(th)) td a
+{
+    padding: 8px;
+}
+
+table.responsive-table tr:not(:has(th)) td::before{
+    content:attr(data-label);
+    padding: 8px 16px;
+    width: 100px;
+    min-width: 100px;
+    font-weight: bold;
+    font-family: var(--font-family-headings);
+    text-align: left;
+}
+
+
+@media screen and (min-width: 768px){ 
+    table.responsive-table tr:not(:has(th)) td::before{
+        width: 200px;
+        min-width: 200px;
+    }
+}
+
+@media screen and (min-width: 992px){ 
+    table.responsive-table tr:not(:has(th)) td span,
+    table.responsive-table tr:not(:has(th)) td a{
+        padding: unset;
+    }
+    
+    table.responsive-table th,
+    table.responsive-table td,
+    table.responsive-table tr:not(:has(th)) td{
+        padding: 10px 20px;
+    }
+
+    table.responsive-table tr:not(:has(th)) td::before{
+        content: none;
+        display: none;
+    }
+
+    table.responsive-table tr:not(:has(th)) td{
+        display: table-cell;
+    }
+    
+    table.responsive-table tr:has(th),
+    table.responsive-table tr:not(:has(th)){
+        display: table-row;
+        margin-bottom: unset;
+    }
+
+    table.responsive-table{
+        max-width: 100%;
+        border: none;
+        border-spacing: 0;
+    }
+    
+    table.responsive-table th{
+        background-color: var(--table-th-bg);
+        color: var(--table-th-color);
+        text-align: left;
+        border-bottom: 2px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+    }
+    
+    table.responsive-table th:last-of-type,
+    table.responsive-table tr:not(:has(th)) td:last-of-type{
+        text-align: right;
+    }
+    
+    table.responsive-table tr:not(:has(th)) td{
+        text-align: left;
+    }
+
+    table.responsive-table tr:not(:has(th)) td:nth-child(odd){
+        background-color: unset;
+    }
+}
