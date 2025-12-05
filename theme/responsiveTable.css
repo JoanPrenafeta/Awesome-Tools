@@ -28,6 +28,7 @@ table.responsive-table tr:not(:has(th)){
     display: flex;
     flex-direction: column;
     margin-bottom: var(--base-gap);
+    background-color: var(--page-bg);
 }
 
 table.responsive-table tr{
