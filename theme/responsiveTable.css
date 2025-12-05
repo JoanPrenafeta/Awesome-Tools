@@ -31,6 +31,7 @@ table.responsive-table tr:not(:has(th)){
 
 table.responsive-table tr{
     border-left: 4px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+    margin-bottom: 0.5rem;
 }
 
 table.responsive-table tr:not(:has(th)) td{
@@ -60,6 +61,8 @@ table.responsive-table tr:not(:has(th)) td::before{
     font-weight: bold;
     font-family: var(--font-family-headings);
     text-align: left;
+    background-color: var(--table-th-bg);
+    color: var(--table-th-color);
 }
 
 
@@ -108,6 +111,9 @@ table.responsive-table tr:not(:has(th)) td::before{
         color: var(--table-th-color);
         text-align: left;
         border-bottom: 2px solid color-mix(in srgb, var(--text-color) 20%, transparent);
+    }
+    table.responsive-table tr{
+        margin-bottom: unset;
     }
     
     table.responsive-table th:last-of-type,
