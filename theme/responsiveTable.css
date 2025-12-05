@@ -7,11 +7,12 @@
     --font-family-headings: "Atkinson Hyperlegible Next", sans-serif;
     --text-color: #0b0e0d;
     --page-bg: #ffffff;
+    --base-gap: 30px;
 }
 table.responsive-table{
     border: none;
     border-spacing: 0;
-    margin-bottom: var(--gap-base);
+    margin-bottom: var(--base-gap);
     width: -webkit-fill-available;
 }
 
@@ -26,12 +27,11 @@ table.responsive-table tr:has(th){
 table.responsive-table tr:not(:has(th)){
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--gap-base);
+    margin-bottom: var(--base-gap);
 }
 
 table.responsive-table tr{
     border-left: 4px solid color-mix(in srgb, var(--text-color) 20%, transparent);
-    margin-bottom: 0.5rem;
 }
 
 table.responsive-table tr:not(:has(th)) td{
@@ -111,9 +111,6 @@ table.responsive-table tr:not(:has(th)) td::before{
         color: var(--table-th-color);
         text-align: left;
         border-bottom: 2px solid color-mix(in srgb, var(--text-color) 20%, transparent);
-    }
-    table.responsive-table tr{
-        margin-bottom: unset;
     }
     
     table.responsive-table th:last-of-type,
