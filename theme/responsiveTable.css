@@ -76,7 +76,7 @@ table.responsive-table tr:not(:has(th)) td::before{
 /*@container responsive-table-layout (min-width: 768px){ 
     }*/
     
-    @container responsive-table-layout (min-width: 992px){ 
+    @container responsive-table-layout (min-width: 768px){ 
     table.responsive-table tr:not(:has(th)) td::before{
         width: 200px;
         min-width: 200px;
