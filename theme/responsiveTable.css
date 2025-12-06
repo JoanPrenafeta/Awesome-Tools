@@ -9,6 +9,12 @@
     --page-bg: #ffffff;
     --base-gap: 30px;
 }
+
+.responsive-table-wrapper{
+    container-type: inline-size;
+    container-name: responsive-table-layout; 
+}
+
 table.responsive-table{
     border: none;
     border-spacing: 0;
@@ -67,14 +73,14 @@ table.responsive-table tr:not(:has(th)) td::before{
 }
 
 
-@media screen and (min-width: 768px){ 
+@container responsive-table-layout (min-width: 768px){ 
     table.responsive-table tr:not(:has(th)) td::before{
         width: 200px;
         min-width: 200px;
     }
 }
 
-@media screen and (min-width: 992px){ 
+@container responsive-table-layout (min-width: 992px){ 
     table.responsive-table tr:not(:has(th)) td span,
     table.responsive-table tr:not(:has(th)) td a{
         padding: unset;
